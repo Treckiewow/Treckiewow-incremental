@@ -1,12 +1,12 @@
 var game = {
-    metal: 1000000000000,                //variable gets saved
+    metal: 10,                //variable gets saved
     totalmetal: 0,                      //variable gets saved
     totalmetalmined: 0,                 //variable gets saved
     metalpersecondtwo: 0,               //variable gets saved
     energy: 0,                    //variable gets saved
     railguninterval: 1800000,      //1800000                   //variable gets saved
     railgunstartinterval: 1800000,  //1800000 
-    techpoints: 155500000000,               //variable gets saved
+    techpoints: 0,               //variable gets saved
     techinterval: 10000,                //variable gets saved
     absoluteenergy: 0,                  //variable gets saved
     qd: false,                          //variable gets saved
