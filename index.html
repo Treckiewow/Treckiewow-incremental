@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=B612+Mono&family=Space+Mono&display=swap" rel="stylesheet">
+    <title>Idle</title>
+</head>
+
+<body style="background-color:#2b2b2b">
+
+    <p class="sectionright">v 0.152</P>
+        
+          <div class="currencies">
+            <div class="metal-currency orangetext"><span id="metal"> 0</span></div>
+            <div class="energy-currency bluetext"><span id="energyproduction"> 0</span></div>
+            <div class="tech-currency greentext"><span id="techpoints"> 0</span></div>
+        </div>
+
+</div>
+<div class="navbuttons">
+        <div id="miningtab" class="tabsContainermining " onclick ="tab('miningMenu')">METAL</div>         
+        <div id="energytab" class="tabsContainerenergy " onclick ="tab('energyMenu')">ENERGY/S</div> <br>
+        <div id="reseachtab" class="tabsContainerresearch " onclick ="tab('researchMenu')">TECH POINTS</div> 
+
+</div>
+</div>
+
+<div id="miningMenu">
+    <div class="currenciespersec">  
+        <div class="whitetext">You are currently gaining <span class="orangetext" id="metalproduction"> 0 </span> metal/s <span id="metalproductionboost"></span></div>
+    </div>
+    <div id="metalgenContainer"> </div>
+    
+    <span class="bluetext"></span>
+
+</div>
+<div id="energyMenu">
+    <div class="currenciespersec whitetext">Your energy buildings are pruducing a total of <span class="bluetext" id="energyproductiontwo">0</span> Energy/s, your <span class="greentext">Research buildings</span> are using <span class="bluetext" id="energyusage"></span> Energy/s, leaving you with a surplus of <span class="bluetext" id="energysurplus"></span> Energy/s. </div>
+    <div id ="energyContainer">
+
+    </div><br><br>
+    <div id ="constructorContainer">
+
+    </div>
+</div>
+    <div id="researchMenu">
+        <div class="currenciespersec whitetext">Every <span class="greentext" id="techtime"></span> seconds your scientists have <span  class="greentext" id="techpercent"></span>% chance to make a discovery, and award you with <span class="greentext"  id="techamount"></span> tech points</div>
+
+        <div id="researchContainer"> </div>
+        <div class="column3">
+            <div id="selllabContainer"> </div>
+            <div id="sellcompContainer"> </div>
+            <div id="sellqcompContainer"> </div><br>
+
+
+        </div><br><br><div id="selling" class="centered whitetext"></div><br>
+        <div id="researcht2Container"> </div><br><br>
+        <div class="upgradeblock"><div id ="upgradeContainer">
+
+
+
+
+        </div></div>
+    </div>
+
+
+
+    <div id="changelogMenu">
+        <div><embed src="Changelog.txt" class="changelog changelogbox"></div>
+        
+    
+    
+    </div>
+    <div id="aboutMenu">
+        <div><embed src="About.txt" class="changelog changelogbox"></div>
+        
+    
+    
+    </div>
+   
+    <div class="progressBar hidden" id="progressBar">
+        <div class="metalprogress" id="metalprogress"><span id="progressperc"></span>%</div>
+        
+      </div>
+      <div class="railgunBar hidden" id="railgunBar">
+        
+        <div class="railbar" id="railbar"><span class="railbarp" id="railbarperc"></span></div>
+        
+      </div>
+
+      <div class="gameover hugetext" id="gameover" ></div>
+
+
+    
+    
+    <div class="savebuttons">
+        <p class="Savefat" id="savepopup"> </p>
+    <button onclick="saveGame();">Save Game</button>
+    <button onclick="resetGame();">Reset Game</button>
+    <button onclick ="tab('changelogMenu')">Changelog</button>
+    <button onclick ="tab('aboutMenu')">About</button>
+    
+</div>
+
+
+    <script src="game.js"></script>
+    <script src="Changelog.txt"></script>
+    <script src="About.txt"></script>
+
+
+
+
+
+</body>
+
+
+
+</html>

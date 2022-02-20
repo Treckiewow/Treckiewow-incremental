@@ -1,0 +1,750 @@
+.generators-container {
+    display: flex;
+    flex-direction: column;
+
+}
+.sectionleft {
+    position: left;
+
+}
+
+.colums6 {
+    columns: 6;
+}
+.colums5 {
+    columns: 5;
+}
+.colums3 {
+    columns: 3;
+}
+.colums4 {
+    columns: 4;
+}
+.toptext{
+    position: fixed;
+    top: 0%;
+    left: 0;
+    color: #bbbbbb;
+}
+
+.hugetext {
+    font-size: 5em;
+    color:#bbbbbb;
+}
+.sectionright {
+    position: fixed;
+    top: 3%;
+    right: 2%;
+    color: #bbbbbb;
+}
+.researchContainer p {
+    margin-top: 30px;
+}
+.hidden {
+    display: none;
+}
+.savebuttons{
+    position: fixed;
+    bottom: 5%;
+    left: 00%;
+}
+
+
+.navbuttons {
+    margin: auto;
+    width: 60%;
+    margin-top: 50px;
+}
+.tabsContainermining {
+    width: 200px;
+    float:left;
+    width: 25%;
+    text-align: center;
+    line-height: 45px;
+    text-align: center;
+    background: #ddb477;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    cursor: Pointer;
+    user-select: none;
+    transition-duration: 1s;
+    border-radius:20px;
+    transition: 1.2s;
+}
+.tabsContainermining:hover {
+    width: 25%;
+    float:left;    
+    line-height: 45px;
+    text-align: center;
+    background: #8281ce;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: Pointer;
+    user-select: none;
+    transition-duration: 0s;
+    border-radius:20px;
+    transition: 0s;
+}
+
+.tabsContainerresearch {
+    width: 25%;
+    float:left;
+    margin-left: 12.5%;
+    text-align: center;
+    line-height: 45px;
+    background: #8ecf8e;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    cursor: Pointer;
+    user-select: none;
+    transition-duration: 1s;
+    border-radius:20px;
+    transition: 1.2s;
+}
+.tabsContainerresearch:hover {
+    width: 25%;
+    float:left;
+    margin-left: 12.5%;
+    text-align: center;
+    line-height: 45px;
+    background: #8281ce;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: Pointer;
+    user-select: none;
+    transition-duration: 0s;
+    border-radius:20px;
+    transition: 0s;
+}
+
+.tabsContainerenergy {
+    width: 25%;
+    float:left;
+    margin-left: 12.5%;
+    text-align: center;
+    line-height: 45px;
+    background: #84c9fb;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: Pointer;
+    user-select: none;
+    transition-duration: 1s;
+    border-radius:20px;
+    transition: 1.2s;
+}
+.tabsContainerenergy:hover {
+    width: 25%;
+    float:left;
+    margin-left: 12.5%;
+    text-align: center;
+    line-height: 45px;
+    background: #8281ce;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: Pointer;
+    user-select: none;
+    border-radius:20px;
+    transition-duration: 0s;
+}
+
+
+
+.whitetext{
+    color: #ffffff;
+}
+.blacktext{
+    color: #000000;
+}
+.bluetext {
+    color: #84c9fb;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    white-space: nowrap
+}
+.orangetext {
+    color: #ddb477;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    white-space: nowrap
+}
+.greentext {
+    color: #8ecf8e;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    white-space: nowrap
+}
+.ding {
+    opacity: 1;
+    transition-duration: 0s;
+    background: #d68080;
+
+}
+.centered {
+    text-align: center;
+}
+.Savefat {
+    font-weight: bolder;
+    margin-bottom: 0px;
+    color:#bbbbbb;
+}
+
+
+
+.changelogbox {
+    margin-top: 15px;
+}
+.changelog {
+    width: 100%;
+    height: 70%;
+    background-color: #808080;
+}
+.researchContainer {
+    margin-left: 15%;
+    position: left;
+    width: 70%;
+    height: 50px;
+    margin-top: 3; 
+    align-content: auto;
+    text-align: left;
+    font-size:medium;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: #8ecf8e;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+}
+
+.researchContainer.cantafford {
+    margin-left: 15%;
+    position: left;
+    width: 70%;
+    height: 50px;
+    margin-top: 3; 
+    align-content: auto;
+    text-align: left;
+    font-size:medium;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: #A3A3A3;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(41, 204, 8);
+    border: 2px solid #000000;
+}
+.researcht2Container {
+    margin-left: 15%;
+    position: left;
+    width: 70%;
+    height: 50px;
+    margin-top: 3; 
+    align-content: auto;
+    text-align: left;
+    font-size:medium;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: #8ecf8e;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+}
+
+.researcht2Container.cantafford {
+    margin-left: 15%;
+    position: left;
+    width: 70%;
+    height: 50px;
+    margin-top: 3; 
+    align-content: auto;
+    text-align: left;
+    font-size:medium;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: #A3A3A3;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+}
+.selllabContainer {
+    margin-left: 15%;
+    position: center;
+    width: 20%;
+    height: 40;
+    float: left;
+    margin-top: 0; 
+    align-content: center;
+    text-align: center;
+    font-size:0.9em;
+    font-weight: bold;
+    vertical-align: top;
+    background: #dbd470;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+}
+
+.sellcompContainer {
+    width: 20%;
+    height: 40;
+    float: left;
+    margin-left: 5%;
+    margin-top: 0; 
+    align-content: center;
+    text-align: center;
+    font-size:0.9em;
+    font-weight: bold;
+    vertical-align: top;
+    background: #dbd470;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+} 
+
+
+.sellqcompContainer {
+    width: 20%;
+    height: 40;
+    float: left;
+    margin-left: 5%;
+    margin-top: 0; 
+    align-content: center;
+    text-align: center;
+    font-size:0.9em;
+    font-weight: bold;
+    vertical-align: top;
+    background: #dbd470;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+}
+.metalgenContainer {
+    margin-left: 12.5%;
+    position: center;
+    width: 70%;
+    height: 30px;
+    margin-top: 3; 
+    align-content: center;
+    text-align: left;
+    font-size:medium;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: #ddb477;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+
+}
+
+.metalgenContainer.cantafford {
+    margin-left: 12.5%;
+    position: center;
+    width: 70%;
+    height: 30px;
+    margin-top: 3; 
+    align-content: center;
+    text-align: left;
+    background: #A3A3A3;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px; 
+    border: 5px; 
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+}
+.energyContainer {
+    margin-left: 12.5%;
+    position: center;
+    width: 70%;
+    height: 40px;
+    margin-top: 3; 
+    align-content: center;
+    text-align: left;
+    font-size:medium;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: #84c9fb;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+
+}.energyContainer.cantafford {
+    margin-left: 12.5%;
+    position: center;
+    width: 70%;
+    height: 40px;
+    margin-top: 3; 
+    align-content: center;
+    text-align: left;
+    font-size:medium;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: #A3A3A3;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+
+}
+
+.constructorContainer {
+    margin-left: 12.5%;
+    position: center;
+    margin-top: 50px;
+    width: 70%;
+    height: 40px;
+    margin-top: 3; 
+    align-content: center;
+    text-align: left;
+    font-size:medium;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: #F2F2F2;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+
+}.constructorContainer.cantafford {
+    margin-left: 12.5%;
+    position: center;
+    margin-top: 50px;
+    width: 70%;
+    height: 40px;
+    margin-top: 3; 
+    align-content: center;
+    text-align: left;
+    font-size:medium;
+    font-weight: bold;
+    vertical-align: bottom;
+    background: #A3A3A3;
+    color: rgb(0, 0, 0);
+    cursor: Pointer;
+    user-select: none;
+    border-radius:10px;    
+    border: 5px;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid #000000;
+
+}
+
+.generator--unavailable {
+    background: black;
+    cursor: default;
+}
+.upgradeblock {
+    margin-bottom: 10%;
+}
+.upgradeContainer {
+    height: 50px;
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 0.2%;
+    position: center;
+    margin-top: 3; 
+    background: #8ecf8e;
+    text-align: center;
+    align-content: center;
+    color: black;
+    cursor: Pointer;
+    user-select: none;
+    font-weight: bold;
+    float: center;
+    border-radius: 50px;
+    border: 2px solid rgb(0, 0, 0);
+}
+.upgradeContainer.cantafford {
+    height: 50px;
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 0.2%;
+    position: center;
+    margin-top: 3; 
+    background: #A3A3A3;
+    text-align: center;
+    align-content: center;
+    color: black;
+    font-weight: bold;
+    cursor: Pointer;
+    user-select: none;
+    float: center;
+    border-radius: 50px;
+    border: 2px solid gold;
+}
+
+
+.upgradeContainer p {
+    margin: 5px;
+}
+
+.metalgenContainer p {
+    margin: 4px;
+}
+
+
+.cantafford:hover {
+    border: 0px solid black;
+    border: 2px solid #df2e2e;
+
+}
+.canafford:hover {
+    border: 0px solid black;
+    border: 2px solid #25c43a;
+
+}
+
+.metalgenContainer:unavailable {
+    background-color:rgb(0, 0, 0);
+
+}
+
+.currencies{
+
+    margin-top: 40px;
+    margin: auto;
+    width: 60%;
+    background-color: #25c43a;
+    
+}
+
+
+
+.metal-currency { 
+    height: 40px;
+    float: left;
+    width: 25%;
+    text-align: center;
+    font-size: 2em;
+
+
+}
+.tech-currency {
+    height: 40px;
+    width: 25%;
+    margin-left: 12.5%;
+    float:right;
+    text-align: center;
+    font-size: 2em;
+}
+.energy-currency{
+    height: 40px;
+    width: 25%;
+    margin-left: 12.5%;
+    float:left;
+    text-align: center;    
+    font-size: 2em;
+}
+
+.currenciespersec{
+    position: flex;
+    margin-top: 75px;
+    margin-bottom: 5px;
+    text-align: center;
+
+}
+.center {
+    margin: auto;
+    width: 60%;
+    border: 5px solid #000000;
+    padding: 10px;
+    left: 50%;
+}
+
+.metal-currencypersec {
+    text-align: center;
+    padding: 0;
+    color: rgb(0, 0, 0);
+    font-size: 1em;
+
+}
+
+.upgrades {
+    display: right;
+}
+
+
+.show {
+    display:block;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.unaffordable {
+    background: gray;
+}
+
+
+.railgunBar {
+    width: 80%;    
+    background-color: rgb(128, 128, 128);
+    top: 90%;
+    left: 00%;
+    margin-left: 10%;
+    position: fixed;
+    text-align: left;
+    border: 2px solid black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.railbar {
+    width: 1%;
+    height: 20px;
+    top: 90%;
+    background-color: #8ecf8e;
+    text-align: center;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    
+    text-align: left;
+    transition: width 0.5s;
+}
+
+
+.progressBar {
+    width: 100%;    
+    background-color: rgb(128, 128, 128);
+    position: fixed;
+    top: 00%;
+    left: 00%;
+}
+  
+.metalprogress {
+    width: 1%;
+    height: 20px;
+    top: 00%;
+    background-color: #ddb477;
+    text-align: center;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    transition: width 0.5s;
+}
+
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    padding: 3px;
+    /*border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    height: auto;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border: 2px solid red;
+    border-radius: 1px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 0%;
+    left: 95%;
+    margin-left: 0;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: 0;
+  }
+  
+  /* Tooltip arrow */
+
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .tooltip2 {
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    /*border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip2 .tooltiptext2 {
+    visibility: hidden;
+    width: 50%;
+    height: auto;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border: 2px solid red;
+    border-radius: 1px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    top: 102%;
+    left: 25%;
+    margin-left: 0px;
+    margin: auto;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: 0;
+  }
+  
+  /* Tooltip arrow */
+
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip2:hover .tooltiptext2 {
+    visibility: visible;
+    opacity: 1;
+  }

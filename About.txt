@@ -1,0 +1,30 @@
+If you have any questions, feel free to message me on discord.gg/treckie, or PM me at Treckie#4788. Alternatively DM on Twitter @Treckiewow
+
+HOW TO PLAY:
+ - Build Metal mining buildings to collect metal (used for most buildings)
+ - Build Energy/s collection buildings to generate Energy/s (Note that this number does NOT increase as you do not have a way to store energy, but rather shows 
+ your "overproduction" you can use for things)
+ - Build Tech Point buildings to generate tech points for upgrades
+ - Have fun!
+
+ABOUT ME/the game.                  //You just lost the game :D
+
+I've played clicker/idle/incrementalgames for as long as i can remember them being around. I've dediced against having any real clicker element to the game, as I 
+feel those games can be trivialized a lot of times with autoclickers, making you feel bad should you not want to use it. That, or you end up with a broken mouse.
+
+As a fan of the genre I've decided to create my own as a way to teach myself to code, this means that while hopefully most functions work, they are not as advanced
+or optimized as someone else who might have a more grounded experience with coding and building games. But it seems to work for now and I'm loving the experience!
+As a science fiction fan, I've decided that as the main theme for the game.
+
+Currently, I'm working on finalizing the first prestige layer of the game where you finish mining all materials from the solar system with the endgoal of building
+a dyson swarm of solar sails to sustain the civilization with limitless power. There is a lot of balancing that needs to be done for it to feel fun to play, but as
+of right now, most mechanics planned to exist before the first prestige are available.
+I welcome any kind of feedback as you often get too close to the project to be able to see where real needed changes has to be done in order to make the game
+enjoyable for everyone.
+
+Current knows issues/Future plans:
+Game doesn't always "tick" when not the primary window.
+No offline progress (this is planned, but not implemented)
+No max buy option yet.
+No achievements yet.
+Prestige tiers are WIP!

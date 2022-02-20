@@ -1,0 +1,156 @@
+Update Log v 0.153
+
+New features:
+ - The metalbar to show the stage until prestige now has an upgrade tied to it before it shows.
+Fixes:
+ - Fixed an issue with not saving the variable that tracks energyusage for researchbuildings.
+UI elements:
+ - Automated construction progress bar text updated.
+ - Lab is visible from the start of the game now.
+ - ACC bar has better text that is static now.
+
+----------------------------------------
+Update Log v 0.152
+
+Fixes:
+ - Stopped NaN% showing up in energyproduction
+ - Attempt has been made to stop the game "ticking" from blinking should you hover over a bar
+ - Total income for energybuildings have been corrected
+UI elements:
+ - All buildings are color coded for it's resource color
+ - Hovering over a building now shows less invasive graphics if you can buy or not.
+ - Energy and Tech Points have changed places
+ - Energy buildings have a more advanced tooltip
+ - A couple of tooltips have gotten some minor wording changes.
+
+----------------------------------------
+Update Log v 0.151
+
+Balancing:
+ - Amount of Railgun launchers is not tied to Planetary extractors anymore
+UI elements:
+ - hidden the progressbar untill you reach further into the game (it felt too jumpy at the start)
+ - Various minor graphical improvements
+
+----------------------------------------
+Update Log v 0.15
+
+New features:
+ - New building Automated Construction Complex: Planetary Extractor
+ - New building Automated Construction Complex: Railgun Launcher
+ - New building Temporal science academy
+ - Lots of new upgrades!
+ - Added an About section!
+ - New progressbar! Going towards the first prestige (NYI)
+ - New bar showing time between automated completions (placeholder position)
+Fixes:
+ - Railgun launchers cost is now saved as well
+ - Some UI elements disapeared after refreshing, that is no more
+Balancing:
+ - Moon Drill production increased by 3 times
+ - Decrease cost scaling of railgun launcher
+ - Hydro power plant has an increased cost
+ - Caterpillar-Planetary extractor has increased cost
+ - Asteroid-Planetary extractor has decreased income
+ - Solar sail has increased cost
+UI elements:
+ - Hovering over resource tabs has a brand new color!
+ - Resource "tick" has a new red color
+ - Max indicator for railguns added
+ - Version numbers have been revised
+
+----------------------------------------
+Update Log v 0.014
+
+New features:
+ - Railgun launcher has a upgrade tied to it before being able to build it
+Fixes:
+ - Railgun launcher has a tooltip
+Balancing:
+ - Lowered cost of many upgrades
+ - All energy buildings upgrades now multiply income by 2,3,5 times.
+UI elements:
+ - Visually hidden higher tier buildings to ease the beginner experience
+ - Visually improved the resourse tabs
+
+----------------------------------------
+Update Log v 0.013
+
+New features:
+ - Asteroid collectors has a new upgrade "Rare-earth metals"
+ - Railgun launcher has been added!
+Fixes:
+ - Bobcat upgrade trigger has been fixed to correlate to the correct building
+ - Moon drill production increased
+ - LAB has less caps in it
+ - Fixed tooltip to shovel upgrade
+Balancing:
+ - Reduced cost of "your first discovery"
+ - Majority of metalbuildings have had their costs and productions adjusted
+
+----------------------------------------
+Update Log v 0.012
+
+New features:
+ - New upgrade to help you start seeing upgrades
+ - Shovels has a new upgrade "Digging for gold!!"
+ - Bobcats has a new upgrade "iujnpbaveriyerb"
+ - Caterpillars has a new upgrade "One Caterpillar 6090, or 6090 caterpillars?"
+ - Moon Drills has a new upgrade "Death Melon!"
+Balancing:
+ - Solar Panels have risen in metal cost
+ - Many buildings have gotten more reasonable costs
+ - Many upgrades have gotten more reasonable costs
+ - Lab and it's upgrades have been tuned slightly
+ - Solar Sail produce more energy
+ - Nuclear power plants produce more energy
+UI elements:
+ - Metal building tooltips have been changed (again)
+ - Energy building tooptips have been changed (again)
+
+----------------------------------------
+Update Log v 0.011
+
+New features:
+ - New Energy building: Geothermal power plant
+ - New upgrades for Geothermal power plant
+ - Tricone Drills now work on the moon!
+Fixes:
+ - Fixed an issue with energybuilding upgrades not calculating properly
+Balancing:
+ - Research buildings have adjusted costs
+ - Energy buildings have adjusted costs
+ - Some upgrades have adjusted costs
+UI elements:
+ - Tooltipcorrections
+ - Metal building tooltips have been changed
+ - Energy building tooptips have been changed
+
+----------------------------------------
+Update Log v 0.010
+
+New features:
+ - Added Changelog feature!
+ - Added Upgrades for Reseach buildings
+ - Added Upgrades for Energy buildings
+ - Added version indicator
+ - Added Save indicator
+Balancing:
+ - Increased the cost of Solar sail
+ - Minor tuning of the Lab
+ - Minor tuning of earlygame buildings
+UI elements:
+ - Improved energy description
+ - Tooltip fixes
+ - Moved save/load/reset buttons
+
+
+
+
+
+
+
+
+
+
+
