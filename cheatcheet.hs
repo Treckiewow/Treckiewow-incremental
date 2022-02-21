@@ -26,6 +26,8 @@ Stellar engine
 Shkadow thruster: Big parabola mirror on the sun.
 Caplan thruster
 
+start with x metal
+
 Metrioshka brain
 Computer of such computing power that a society can upload their minds to exist in a simulated universe without having to leave (Around a red Dwarf)
 
@@ -50,7 +52,7 @@ Balancing:
  - 
 UI elements:
  - 
-
+----------------------------------------
 
 
  It would be cool to see an area below the tech tree with something representing the purchased buildings (so that when I'm viewing the Energy tab I can see that I have 1 Lab, 2 Solar Panals etc). What if there were limited slots in it too? So you were forced to replace lower yield buildings with higher ones to be more efficient? (e.g. 12 slots available for buildings and each building occupied 1 or more slots; so you might start by buying lots of Solar Panels but later have to replace them to make room for more important buildings and have to make choices about what to keep and what to discard).
@@ -101,6 +103,63 @@ production      Cost'       production mult     cost mult       production per c
 
 
 
+Achievements:
+1 000 metal
+1 000 000 metal
+1 000 000 000 metal
+1 000 000 000 000 metal
+1 000 000 000 000 000 metal
+1 000 000 000 000 000 000 metal
+1 000 000 000 000 000 000 000 metal
+1 000 000 000 000 000 000 000 000 Metal
+
+metalbuildings
+10
+25
+50
+75
+100
+
+energybuildings
+10
+25
+50
+75
+100
+
+researchbuildings
+10
+25
+50
+75
+100
+
+upgrades
+5
+10
+15
+20
+25
+30
+35
+40
+45
+50
+55
+60
+
+special:
+69 caterpillars
+420 Planetary extractors
+1 000 PE/Railguns
+1 000 000 Solar sails
+36 Supercomputers
+energy/s == 1337
+
+(maybe later) 
+have all buildings be even amount?
+
+
 
 
 
@@ -116,5 +175,4 @@ TO DO:
 
 Maybe:
 moon drills and forward higher cost.
-upgrading energy buildings give 200% energy%
 

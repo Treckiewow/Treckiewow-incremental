@@ -473,6 +473,24 @@
     background: black;
     cursor: default;
 }
+.achievementContainer {
+    height: 50px;
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 0.2%;
+    position: center;
+    margin-top: 3; 
+    background: #8ecf8e;
+    text-align: center;
+    align-content: center;
+    color: black;
+    cursor: Pointer;
+    user-select: none;
+    font-weight: bold;
+    float: center;
+    border-radius: 50px;
+    border: 2px solid rgb(0, 0, 0);
+}
 .upgradeblock {
     margin-bottom: 10%;
 }

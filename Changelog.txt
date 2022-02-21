@@ -1,3 +1,26 @@
+Update Log v 0.155
+
+New features:
+ - Achievements have been added to the game!
+Fixes:
+ - 
+Balancing:
+ - 
+UI elements:
+ - Upgraded scaling capabilities for smaller screens
+----------------------------------------
+Update Log v 0.154
+
+New features:
+ - 
+Fixes:
+ - Fixed an issue with Energy not being calculated correctly after buying upgrades
+Balancing:
+ - 
+UI elements:
+ - 
+
+----------------------------------------
 Update Log v 0.153
 
 New features:

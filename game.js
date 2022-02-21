@@ -44,6 +44,7 @@ function tab(tab) {
     document.getElementById("energyMenu").style.display ="none"
     document.getElementById("changelogMenu").style.display ="none"
     document.getElementById("aboutMenu").style.display ="none"
+    document.getElementById("achievementMenu").style.display ="none"
     document.getElementById(tab).style.display = "block"
 }
 tab("miningMenu")
@@ -528,7 +529,108 @@ var energybuilding = {
 
 
 
+var achievement = {
+    name: [
+        "Mine 1 000 Metal",
+        "Mine 1 000 000 Metal",
+        "Mine 1e9 Metal",
+        "Mine 1e12 Metal",
+        "Mine 1e15 Metal",
+        "Mine 1e18 Metal",
+        "Mine 1e21 Metal",
+        "Mine 1e24 Metal"
 
+
+    ],
+    description: [
+        "You've successfully mined 1 000 Metal!",
+        "You've successfully mined 1 000 000 Metal!",
+        "You've successfully mined 1e9 Metal! Tres Comas!!!",
+        "You've successfully mined 1e12 Metal! ",
+        "You've successfully mined 1e15 Metal!",
+        "You've successfully mined 1e18 Metal!",
+        "You've successfully mined 1e21 Metal!",
+        "You've successfully mined 1e24 Metal!",
+
+    ],
+    type: [
+        "Metal",
+        "Metal",
+        "Metal",
+        "Metal",
+        "Metal",
+        "Metal",
+        "Metal",
+        "Metal"
+    ],
+    requirement: [
+        1000,
+        1000000,
+        1000000000,
+        1000000000000,
+        1000000000000000,
+        1000000000000000000,
+        1000000000000000000000,
+        1000000000000000000000000
+    ],
+    metalbuildingIndex: [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    energybuildingIndex: [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    researchbuildingIndex: [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    specialrequirement: [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+
+    awarded: [false],
+
+    earn: function(index) {
+        this.awarded[index] = true;
+
+
+
+    }
+
+
+
+
+
+
+
+
+}
 
 
 
@@ -1273,13 +1375,17 @@ var upgrade = {
                 
                 for (i = 0; i < energybuilding.name.length; i++) {
                     energybuilding.absoluteincome[i] = energybuilding.income[i] * (energybuilding.count[i]);
-                    energybuilding.totalincome[i] = energybuilding.income[i] * (energybuilding.count[i]);
                 }
-                game.energy += energybuilding.absoluteincome[this.energybuildingIndex[index]];
-                energybuilding.partoftotal[0] = (energybuilding.absoluteincome[0]) / (energybuilding.absoluteincome[0]+energybuilding.absoluteincome[1]+energybuilding.absoluteincome[2]+energybuilding.absoluteincome[3])
-                energybuilding.partoftotal[1] = (energybuilding.absoluteincome[1]) / (energybuilding.absoluteincome[0]+energybuilding.absoluteincome[1]+energybuilding.absoluteincome[2]+energybuilding.absoluteincome[3])
-                energybuilding.partoftotal[2] = (energybuilding.absoluteincome[2]) / (energybuilding.absoluteincome[0]+energybuilding.absoluteincome[1]+energybuilding.absoluteincome[2]+energybuilding.absoluteincome[3])
-                energybuilding.partoftotal[3] = (energybuilding.absoluteincome[3]) / (energybuilding.absoluteincome[0]+energybuilding.absoluteincome[1]+energybuilding.absoluteincome[2]+energybuilding.absoluteincome[3])
+                game.absoluteenergy = energybuilding.absoluteincome[0]+energybuilding.absoluteincome[1]+energybuilding.absoluteincome[2]+energybuilding.absoluteincome[3]+energybuilding.absoluteincome[4]
+                game.energy = game.absoluteenergy - (researchbuilding.addedenergycost[0] + researchbuilding.addedenergycost[1] + researchbuilding.addedenergycost[2])
+                if (game.absoluteenergy != 0){
+                energybuilding.partoftotal[0] = (energybuilding.absoluteincome[0]) / game.absoluteenergy
+                energybuilding.partoftotal[1] = (energybuilding.absoluteincome[1]) / game.absoluteenergy
+                energybuilding.partoftotal[2] = (energybuilding.absoluteincome[2]) / game.absoluteenergy
+                energybuilding.partoftotal[3] = (energybuilding.absoluteincome[3]) / game.absoluteenergy
+                energybuilding.partoftotal[4] = (energybuilding.absoluteincome[4]) / game.absoluteenergy
+                } 
+                
                 display.updateEnergy();
                 display.updateMetal();
                 display.updateGenerators();
@@ -1347,13 +1453,13 @@ var display = {
 
                     if (metalbuilding.name[i] == "Shovel") {
                         if (metalbuilding.cost[0] <= game.metal) 
-                        document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip canafford colums6" onclick="metalbuilding.purchase('+i+')"><p>'+metalbuilding.name[i]+'</p> <p>'+metalbuilding.count[i]+'</p><p>'+format(metalbuilding.income[i])+' Metal/s</p><p>Total '+format(metalbuilding.totalincome[i])+' Metal/s</p><p>Costs: '+format(metalbuilding.cost[i])+' Metal</p><p>'+format(metalbuilding.partoftotal[i]*100)+'% of total</p> <span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
-                        else  document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip cantafford colums6" onclick="metalbuilding.purchase('+i+')"><p>'+metalbuilding.name[i]+'</p> <p>'+metalbuilding.count[i]+'</p><p>'+format(metalbuilding.income[i])+' Metal/s</p><p>Total '+format(metalbuilding.totalincome[i])+' Metal/s</p>   <p>Costs: '+format(metalbuilding.cost[i])+' Metal</p><p>'+format(metalbuilding.partoftotal[i]*100)+'% of total</p><span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</p></span></div><br>'
+                        document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip canafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div><div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
+                        else  document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip cantafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div>   <div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
                     }
                     if (metalbuilding.count[i-1] >= 1 && metalbuilding.name[i] != "Shovel") {
                         if (metalbuilding.cost[i] <= game.metal) 
-                        document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip canafford colums6" onclick="metalbuilding.purchase('+i+')"><p>'+metalbuilding.name[i]+'</p> <p>'+metalbuilding.count[i]+'</p><p>'+format(metalbuilding.income[i])+' Metal/s</p><p>Total '+format(metalbuilding.totalincome[i])+' Metal/s</p><p>Costs: '+format(metalbuilding.cost[i])+' Metal</p><p>'+format(metalbuilding.partoftotal[i]*100)+'% of total</p> <span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
-                        else  document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip cantafford colums6" onclick="metalbuilding.purchase('+i+')"><p>'+metalbuilding.name[i]+'</p> <p>'+metalbuilding.count[i]+'</p><p>'+format(metalbuilding.income[i])+' Metal/s</p><p>Total '+format(metalbuilding.totalincome[i])+' Metal/s</p>   <p>Costs: '+format(metalbuilding.cost[i])+' Metal</p><p>'+format(metalbuilding.partoftotal[i]*100)+'% of total</p><span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</p></span></div><br>'
+                        document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip canafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div><div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
+                        else  document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip cantafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div>   <div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
                     }
                 }  
                
@@ -1378,38 +1484,38 @@ var display = {
             document.getElementById("sellqcompContainer").innerHTML = '<div class="sellqcompContainer" onclick="researchbuilding.sell('+2+')")><p> Sell Quantum Computer</p>';
         }
         if (researchbuilding.metalcost[0] <= game.metal && researchbuilding.energycost[0] <= game.energy) 
-            document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip canafford colums5" onclick="researchbuilding.purchase('+0+')")><p>'+researchbuilding.name[0]+'</p><p>'+researchbuilding.count[0]+'</p><p> Costs: '+format(researchbuilding.metalcost[0])+' Metal</p><p> Costs: '+format(researchbuilding.energycost[0])+' Energy/s</p> <p>'+researchbuilding.totalincome[0]+' per procc</p><span class="tooltiptext"> Buying a '+researchbuilding.name[0]+' will increase the amount of tech points per discovery by '+researchbuilding.increase[0]+' </span><br>'
-        else  document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5"onclick="researchbuilding.purchase('+0+')")><p> '+researchbuilding.name[0]+'</p><p>'+researchbuilding.count[0]+'</p><p> Costs: '+format(researchbuilding.metalcost[0])+' Metal</p><p> Costs: '+format(researchbuilding.energycost[0])+' Energy/s</p><p>'+researchbuilding.totalincome[0]+'per procc</p><span class="tooltiptext"> Buying a '+researchbuilding.name[0]+' will increase the amount of tech points per discovery by '+researchbuilding.increase[0]+' </span><br>'
+            document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip canafford colums5 row" onclick="researchbuilding.purchase('+0+')")><div class="col">'+researchbuilding.name[0]+'</div><div class="col">'+researchbuilding.count[0]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[0])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[0])+' Energy/s</div> <div class="col">'+researchbuilding.totalincome[0]+' per procc</div><span class="tooltiptext"> Buying a '+researchbuilding.name[0]+' will increase the amount of tech points per discovery by '+researchbuilding.increase[0]+' </span><br>'
+        else  document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5 row"onclick="researchbuilding.purchase('+0+')")><div class="col"> '+researchbuilding.name[0]+'</div><div class="col">'+researchbuilding.count[0]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[0])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[0])+' Energy/s</div><div class="col">'+researchbuilding.totalincome[0]+'per procc</div><span class="tooltiptext"> Buying a '+researchbuilding.name[0]+' will increase the amount of tech points per discovery by '+researchbuilding.increase[0]+' </span><br>'
 
 
         if (researchbuilding.count[0] >= 1 || game.qd==true) {
             document.getElementById("selling").innerHTML = "Selling a research building does not return the metal used to build it.";
             if (researchbuilding.count[1] <= 35){
                 if (researchbuilding.metalcost[1] <= game.metal && researchbuilding.energycost[1] <= game.energy && researchbuilding.count[1] <= 35) 
-                    document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip canafford colums5" onclick="researchbuilding.purchase('+1+')")><p>'+researchbuilding.name[1]+'</p><p>'+researchbuilding.count[1]+'</p><p> Costs: '+format(researchbuilding.metalcost[1])+' Metal</p><p> Costs: '+format(researchbuilding.energycost[1])+' Energy/s</p> <p>'+format(researchbuilding.totalincome[1])+'% increase</p><span class="tooltiptext"> Buying a '+researchbuilding.name[1]+' will increase the chance of making a discovery by '+researchbuilding.increase[1]+' percentage points </span><br>'
-                else  document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5"onclick="researchbuilding.purchase('+1+')")><p> '+researchbuilding.name[1]+'</p><p>'+researchbuilding.count[1]+'</p><p> Costs: '+format(researchbuilding.metalcost[1])+' Metal</p><p> Costs: '+format(researchbuilding.energycost[1])+' Energy/s</p><p>'+format(researchbuilding.totalincome[1])+'% increase</p><span class="tooltiptext"> Buying a '+researchbuilding.name[1]+' will increase the chance of making a discovery by '+researchbuilding.increase[1]+' percentage points </span><br>'
-           } else document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5"onclick="researchbuilding.purchase('+1+')")><p> '+researchbuilding.name[1]+'</p><p>'+researchbuilding.count[1]+'</p><p> MAXIMUM NUMBER OF BUILDINGS REACHED </p><p>'+format(researchbuilding.totalincome[1])+'% increase</p><span class="tooltiptext"> Buying a '+researchbuilding.name[1]+' will increase the chance of making a discovery by '+researchbuilding.increase[1]+' percentage points </span><br>'
+                    document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip canafford colums5 row" onclick="researchbuilding.purchase('+1+')")><div class="col">'+researchbuilding.name[1]+'</div><div class="col">'+researchbuilding.count[1]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[1])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[1])+' Energy/s</div> <div class="col">'+format(researchbuilding.totalincome[1])+'% increase</div><span class="tooltiptext"> Buying a '+researchbuilding.name[1]+' will increase the chance of making a discovery by '+researchbuilding.increase[1]+' percentage points </span><br>'
+                else  document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5 row"onclick="researchbuilding.purchase('+1+')")><div class="col"> '+researchbuilding.name[1]+'</div><div class="col">'+researchbuilding.count[1]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[1])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[1])+' Energy/s</div><div class="col">'+format(researchbuilding.totalincome[1])+'% increase</div><span class="tooltiptext"> Buying a '+researchbuilding.name[1]+' will increase the chance of making a discovery by '+researchbuilding.increase[1]+' percentage points </span><br>'
+           } else document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5 row"onclick="researchbuilding.purchase('+1+')")><div class="col"> '+researchbuilding.name[1]+'</div><div class="col">'+researchbuilding.count[1]+'</div><div class="col"> MAXIMUM NUMBER OF BUILDINGS REACHED </div><div class="col">'+format(researchbuilding.totalincome[1])+'% increase</div><span class="tooltiptext"> Buying a '+researchbuilding.name[1]+' will increase the chance of making a discovery by '+researchbuilding.increase[1]+' percentage points </span><br>'
         }
         if (researchbuilding.count[1] >= 1 || game.qd==true) {
             if (researchbuilding.metalcost[2] <= game.metal && researchbuilding.energycost[2] <= game.energy) 
-                document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip canafford colums5" onclick="researchbuilding.purchase('+2+')")><p>'+researchbuilding.name[2]+'</p><p>'+researchbuilding.count[2]+'</p><p> Costs: '+format(researchbuilding.metalcost[2])+' Metal</p><p> Costs: '+format(researchbuilding.energycost[2])+' Energy/s</p> <p>Every '+researchbuilding.totalincome[2]+' seconds</p><span class="tooltiptext"> Buying a '+researchbuilding.name[2]+' will decrease the time between each discovery by '+format((1-(researchbuilding.increase[2]))*100)+'% </span><br>'
-            else  document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5"onclick="researchbuilding.purchase('+2+')")><p> '+researchbuilding.name[2]+'</p><p>'+researchbuilding.count[2]+'</p><p> Costs: '+format(researchbuilding.metalcost[2])+' Metal</p><p> Costs: '+format(researchbuilding.energycost[2])+' Energy/s</p><p>Every '+researchbuilding.totalincome[2]+' seconds</p><span class="tooltiptext"> Buying a '+researchbuilding.name[2]+' will decrease the time between each discovery by '+format((1-(researchbuilding.increase[2]))*100)+'% </span><br>'
+                document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip canafford colums5 row" onclick="researchbuilding.purchase('+2+')")><div class="col">'+researchbuilding.name[2]+'</div><div class="col">'+researchbuilding.count[2]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[2])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[2])+' Energy/s</div> <div class="col">Every '+researchbuilding.totalincome[2]+' seconds</div><span class="tooltiptext"> Buying a '+researchbuilding.name[2]+' will decrease the time between each discovery by '+format((1-(researchbuilding.increase[2]))*100)+'% </span><br>'
+            else  document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5 row"onclick="researchbuilding.purchase('+2+')")><div class="col"> '+researchbuilding.name[2]+'</div><div class="col">'+researchbuilding.count[2]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[2])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[2])+' Energy/s</div><div class="col">Every '+researchbuilding.totalincome[2]+' seconds</div><span class="tooltiptext"> Buying a '+researchbuilding.name[2]+' will decrease the time between each discovery by '+format((1-(researchbuilding.increase[2]))*100)+'% </span><br>'
         }
 
         if (upgrade.purchased[56] == true) {
             if (researchbuildingt2.metalcost[0] <= game.metal && researchbuildingt2.energycost[0] <= game.energy) 
-                document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip canafford colums5" onclick="researchbuildingt2.purchase('+0+')")><p>'+researchbuildingt2.name[0]+'</p><p>'+researchbuildingt2.count[0]+'</p><p> Costs: '+format(researchbuildingt2.metalcost[0])+' Metal</p><p> Costs: '+format(researchbuildingt2.energycost[0])+' Energy/s</p> <p>Builds '+researchbuildingt2.totalincome[0]+' Planetary extractors every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</p><span class="tooltiptext"> Every Automated construction complex will build one Planetary extractor every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes (This can be reduced by building a Temporal Science academy). Automatically created buildings does not increase the cost of manually built buildings.</span><br>'
-            else  document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip cantafford colums5"onclick="researchbuildingt2.purchase('+0+')")><p> '+researchbuildingt2.name[0]+'</p><p>'+researchbuildingt2.count[0]+'</p><p> Costs: '+format(researchbuildingt2.metalcost[0])+' Metal</p><p> Costs: '+format(researchbuildingt2.energycost[0])+' Energy/s</p><p>Builds '+researchbuildingt2.totalincome[0]+' Planetary extractors every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</p><span class="tooltiptext"> Every Automated construction complex will build one Planetary extractor every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes (This can be reduced by building a Temporal Science academy). Automatically created buildings does not increase the cost of manually built buildings.</span><br>'
+                document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip canafford colums5 row" onclick="researchbuildingt2.purchase('+0+')")><div class="col">'+researchbuildingt2.name[0]+'</div><div class="col">'+researchbuildingt2.count[0]+'</div><div class="col"> Costs: '+format(researchbuildingt2.metalcost[0])+' Metal</div><div class="col"> Costs: '+format(researchbuildingt2.energycost[0])+' Energy/s</div> <div class="col">Builds '+researchbuildingt2.totalincome[0]+' Planetary extractors every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</div><span class="tooltiptext"> Every Automated construction complex will build one Planetary extractor every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes (This can be reduced by building a Temporal Science academy). Automatically created buildings does not increase the cost of manually built buildings.</span><br>'
+            else  document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip cantafford colums5 row" onclick="researchbuildingt2.purchase('+0+')")><div class="col"> '+researchbuildingt2.name[0]+'</div><div class="col">'+researchbuildingt2.count[0]+'</div><div class="col"> Costs: '+format(researchbuildingt2.metalcost[0])+' Metal</div><div class="col"> Costs: '+format(researchbuildingt2.energycost[0])+' Energy/s</div><div class="col">Builds '+researchbuildingt2.totalincome[0]+' Planetary extractors every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</div><span class="tooltiptext"> Every Automated construction complex will build one Planetary extractor every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes (This can be reduced by building a Temporal Science academy). Automatically created buildings does not increase the cost of manually built buildings.</span><br>'
         }
         if (upgrade.purchased[56] == true) {
             if (researchbuildingt2.metalcost[2] <= game.metal && researchbuildingt2.energycost[2] <= game.energy) 
-                document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip canafford colums5" onclick="researchbuildingt2.purchase('+2+')")><p>'+researchbuildingt2.name[2]+'</p><p>'+researchbuildingt2.count[2]+'</p><p> Costs: '+format(researchbuildingt2.metalcost[2])+' Metal</p><p> Costs: '+format(researchbuildingt2.energycost[2])+' Energy/s</p> <p>Builds '+researchbuildingt2.totalincome[2]+' Railgun Launcher every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</p><span class="tooltiptext"> Every Automated construction complex will build one Railgun Launcher every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes (This can be reduced by building a Temporal Science academy). Automatically created buildings does not increase the cost of manually built buildings.</span><br>'
-            else  document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip cantafford colums5"onclick="researchbuildingt2.purchase('+2+')")><p> '+researchbuildingt2.name[2]+'</p><p>'+researchbuildingt2.count[2]+'</p><p> Costs: '+format(researchbuildingt2.metalcost[2])+' Metal</p><p> Costs: '+format(researchbuildingt2.energycost[2])+' Energy/s</p><p>Builds '+researchbuildingt2.totalincome[2]+' Railgun Launcher every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</p><span class="tooltiptext"> Every Automated construction complex will build one Railgun Launcher every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes (This can be reduced by building a Temporal Science academy). Automatically created buildings does not increase the cost of manually built buildings.</span><br>'
+                document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip canafford colums5 row" onclick="researchbuildingt2.purchase('+2+')")><div class="col">'+researchbuildingt2.name[2]+'</div><div class="col">'+researchbuildingt2.count[2]+'</div><div class="col"> Costs: '+format(researchbuildingt2.metalcost[2])+' Metal</div><div class="col"> Costs: '+format(researchbuildingt2.energycost[2])+' Energy/s</div> <div class="col">Builds '+researchbuildingt2.totalincome[2]+' Railgun Launcher every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</div><span class="tooltiptext"> Every Automated construction complex will build one Railgun Launcher every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes (This can be reduced by building a Temporal Science academy). Automatically created buildings does not increase the cost of manually built buildings.</span><br>'
+            else  document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip cantafford colums5 row" onclick="researchbuildingt2.purchase('+2+')")><div class="col"> '+researchbuildingt2.name[2]+'</div><div class="col">'+researchbuildingt2.count[2]+'</div><div class="col"> Costs: '+format(researchbuildingt2.metalcost[2])+' Metal</div><div class="col"> Costs: '+format(researchbuildingt2.energycost[2])+' Energy/s</div><div class="col">Builds '+researchbuildingt2.totalincome[2]+' Railgun Launcher every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</div><span class="tooltiptext"> Every Automated construction complex will build one Railgun Launcher every '+format(((game.railguninterval/60000))*1000)/1000+' Minutes (This can be reduced by building a Temporal Science academy). Automatically created buildings does not increase the cost of manually built buildings.</span><br>'
         }
         if (researchbuildingt2.count[2] >= 1 || researchbuildingt2.count[0] >= 1) {
             if (researchbuildingt2.techcost[1] <= game.techpoints) 
-                document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip canafford colums5" onclick="researchbuildingt2.purchase('+1+')")><p>'+researchbuildingt2.name[1]+'</p><p>'+researchbuildingt2.count[1]+'</p><p> Costs: '+format(researchbuildingt2.techcost[1])+' Tech points</p><p>Time between each completion: '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</p><span class="tooltiptext">Buying a '+researchbuildingt2.name[1]+' will decrease the time between for Automated construction complexes to finish building a Planetary extractor by 10%</span><br>'
-            else  document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip cantafford colums5"onclick="researchbuildingt2.purchase('+1+')")><p> '+researchbuildingt2.name[1]+'</p><p>'+researchbuildingt2.count[1]+'</p><p> Costs: '+format(researchbuildingt2.techcost[1])+' Tech points</p><p>Time between each completion: '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</p><span class="tooltiptext">Buying a '+researchbuildingt2.name[1]+' will decrease the time between for Automated construction complexes to finish building a Planetary extractor by 10%</span><br>'
+                document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip canafford colums5 row" onclick="researchbuildingt2.purchase('+1+')")><div class="col">'+researchbuildingt2.name[1]+'</div><div class="col">'+researchbuildingt2.count[1]+'</div><div class="col"> Costs: '+format(researchbuildingt2.techcost[1])+' Tech points</div><div class="col">Time between each completion: '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</div><span class="tooltiptext">Buying a '+researchbuildingt2.name[1]+' will decrease the time between for Automated construction complexes to finish building a Planetary extractor by 10%</span><br>'
+            else  document.getElementById("researcht2Container").innerHTML += '<div class="researcht2Container tooltip cantafford colums5 row" onclick="researchbuildingt2.purchase('+1+')")><div class="col"> '+researchbuildingt2.name[1]+'</div><div class="col">'+researchbuildingt2.count[1]+'</div><div class="col"> Costs: '+format(researchbuildingt2.techcost[1])+' Tech points</div><div class="col">Time between each completion: '+format(((game.railguninterval/60000))*1000)/1000+' Minutes</div><span class="tooltiptext">Buying a '+researchbuildingt2.name[1]+' will decrease the time between for Automated construction complexes to finish building a Planetary extractor by 10%</span><br>'
         }
 
 
@@ -1434,31 +1540,44 @@ var display = {
         for (i = 0; i < energybuilding.name.length; i++) {
             if (energybuilding.name[i] == "Solar Panel") {
                 if (energybuilding.cost[i] <= game.metal) 
-                document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip canafford colums6" onclick="energybuilding.purchase('+i+')"><p>'+energybuilding.name[i]+'</p> <p>'+format(energybuilding.count[i])+'</p><p>'+format(energybuilding.income[i]*10)/10+' Energy/s</p><p>Total '+format(energybuilding.absoluteincome[i])+' Energy/s</p><p>Costs: '+format(energybuilding.cost[i])+' Metal</p><p>'+format(energybuilding.partoftotal[i]*100)+'% of total</p> <span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy per <span class="orangetext">100.000</span> Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
-                else  document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip cantafford colums6" onclick="energybuilding.purchase('+i+')"><p>'+energybuilding.name[i]+'</p> <p>'+format(energybuilding.count[i])+'</p><p>'+format(energybuilding.income[i]*10)/10+' Energy/s</p><p>Total '+format(energybuilding.absoluteincome[i])+' Energy/s</p>   <p>Costs: '+format(energybuilding.cost[i])+' Metal</p><p>'+format(energybuilding.partoftotal[i]*100)+'% of total</p><span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy <span class="orangetext">100.000</span> per Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
+                document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip canafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+format(energybuilding.count[i])+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div><div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy per <span class="orangetext">100.000</span> Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
+                else  document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip cantafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+format(energybuilding.count[i])+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div>   <div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy <span class="orangetext">100.000</span> per Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
             }
             if (energybuilding.count[i-1] >= 1 && energybuilding.name[i] != "Solar Panel") {
                 if (energybuilding.cost[i] <= game.metal) 
-                document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip canafford colums6" onclick="energybuilding.purchase('+i+')"><p>'+energybuilding.name[i]+'</p> <p>'+energybuilding.count[i]+'</p><p>'+format(energybuilding.income[i]*10)/10+' Energy/s</p><p>Total '+format(energybuilding.absoluteincome[i])+' Energy/s</p><p>Costs: '+format(energybuilding.cost[i])+' Metal</p><p>'+format(energybuilding.partoftotal[i]*100)+'% of total</p> <span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy per <span class="orangetext">100.000</span> Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
-                else  document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip cantafford colums6" onclick="energybuilding.purchase('+i+')"><p>'+energybuilding.name[i]+'</p> <p>'+energybuilding.count[i]+'</p><p>'+format(energybuilding.income[i]*10)/10+' Energy/s</p><p>Total '+format(energybuilding.absoluteincome[i])+' Energy/s</p>   <p>Costs: '+format(energybuilding.cost[i])+' Metal</p><p>'+format(energybuilding.partoftotal[i]*100)+'% of total</p><span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy <span class="orangetext">100.000</span> per Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
+                document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip canafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+energybuilding.count[i]+'</div><pdiv class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div><div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy per <span class="orangetext">100.000</span> Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
+                else  document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip cantafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+energybuilding.count[i]+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div>   <div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy <span class="orangetext">100.000</span> per Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
             }
         }  
         document.getElementById("constructorContainer").innerHTML = "";
         for (i = 0; i < constructorbuilding.name.length; i++) {
             if (upgrade.purchased[52] == true) {
                 if (constructorbuilding.cost[i] <= game.metal) 
-                document.getElementById("constructorContainer").innerHTML += '<div class="constructorContainer tooltip canafford colums4" onclick="constructorbuilding.purchase('+i+')"><p>'+constructorbuilding.name[i]+'</p> <p>'+constructorbuilding.count[i]+'</p><p>Costs: '+format(constructorbuilding.cost[i])+' Metal</p><p>Produces '+constructorbuilding.count[i]+' Solar sails every '+format(((game.railguninterval/60000))*1000)/1000+' minutes</p><span class="tooltiptext">The railgun launcher comes complete with a fully equipped assembly line for solar sails. Automatically created Solar sails does not increase the cost of manually built Solar sails.</span></div><br>'
-                else  document.getElementById("constructorContainer").innerHTML += '<div class="constructorContainer tooltip cantafford colums4" onclick="constructorbuilding.purchase('+i+')"><p>'+constructorbuilding.name[i]+'</p> <p>'+constructorbuilding.count[i]+'</p><p>Costs: '+format(constructorbuilding.cost[i])+' Metal</p><p>Produces '+constructorbuilding.count[i]+' Solar sails every '+format(((game.railguninterval/60000))*1000)/1000+' minutes</p><span class="tooltiptext">The railgun launcher comes complete with a fully equipped assembly line for solar sails. Automatically created Solar sails does not increase the cost of manually built Solar sails.</span></div><br>'
+                document.getElementById("constructorContainer").innerHTML += '<div class="constructorContainer tooltip canafford colums4 row" onclick="constructorbuilding.purchase('+i+')"><div class="col">'+constructorbuilding.name[i]+'</div> <div class="col">'+constructorbuilding.count[i]+'</div><div class="col">Costs: '+format(constructorbuilding.cost[i])+' Metal</div><div class="col">Produces '+constructorbuilding.count[i]+' Solar sails every '+format(((game.railguninterval/60000))*1000)/1000+' minutes</div><span class="tooltiptext">The railgun launcher comes complete with a fully equipped assembly line for solar sails. Automatically created Solar sails does not increase the cost of manually built Solar sails.</span></div><br>'
+                else  document.getElementById("constructorContainer").innerHTML += '<div class="constructorContainer tooltip cantafford colums4 row" onclick="constructorbuilding.purchase('+i+')"><div class="col">'+constructorbuilding.name[i]+'</div> <div class="col">'+constructorbuilding.count[i]+'</div><div class="col">Costs: '+format(constructorbuilding.cost[i])+' Metal</div><div class="col">Produces '+constructorbuilding.count[i]+' Solar sails every '+format(((game.railguninterval/60000))*1000)/1000+' minutes</div><span class="tooltiptext">The railgun launcher comes complete with a fully equipped assembly line for solar sails. Automatically created Solar sails does not increase the cost of manually built Solar sails.</span></div><br>'
    
             }
         }
     },
-
+    
 
     updateResearchding: function() {
         document.getElementById("reseachtab").classList.remove("ding")
         document.getElementById("miningtab").classList.remove("ding")
         document.getElementById("energytab").classList.remove("ding")
+    },
+
+    updateAchievements: function() {
+        document.getElementById("achievementContainer").innerHTML = "";
+        for (i = 0; i < achievement.name.length; i++) {
+            if (achievement.awarded[i]) {
+                document.getElementById("achievementContainer").innerHTML += '<div class="achievementContainer tooltip">'+achievement.name[i]+'<span class="tooltiptext">'+achievement.description[i]+'</span></div>'
+            }
+        }
+
+
+
+
     },
     updateUpgrades: function() {
 
@@ -1699,6 +1818,12 @@ function loadGame() {
         }
         if (typeof savedGame.qd !== "undefined") game.qd = savedGame.qd;
         if (typeof savedGame.railguntick !== "undefined") game.railguntick = savedGame.railguntick;
+
+        if (typeof savedGame.achievementawarded !== "undefined") {          
+            for (i = 0; i < savedGame.achievementawarded.length; i++) {
+                achievement.awarded[i] = savedGame.achievementawarded[i];
+            }
+        }
     }
 }
 
@@ -1712,6 +1837,7 @@ window.onload = function() {
     display.updateResearch();
     display.updateEnergy();
     display.updateResearchding();
+    display.updateAchievements();
 }
 
 
@@ -1763,7 +1889,8 @@ function saveGame() {
         researchbuildingt2income: researchbuildingt2.income,
         researchbuildingt2totalincome: researchbuildingt2.totalincome,
         railguntick: game.railguntick,
-        researchbuildingaddedenergycost: researchbuilding.addedenergycost
+        researchbuildingaddedenergycost: researchbuilding.addedenergycost,
+        achievementawarded: achievement.awarded
 
 
     };
@@ -1792,6 +1919,15 @@ function resetGame() {
 
 
 setInterval (function() {
+    for (i = 0; i < achievement.name.length; i++) {
+        if (achievement.type[i] == "Metal" && game.totalmetalmined >= achievement.requirement[i]) achievement.earn(i);
+        else if (achievement.type[i] == "Energy" && game.absoluteenergy >= achievement.requirement[i]) achievement.earn(i);
+        else if (achievement.type[i] == "Research" && game.techpoints >= achievement.requirement[i]) achievement.earn(i);
+        else if (achievement.type[i] == "metalbuilding" && achievement.metalbuildingIndex[i] >= achievement.requirement[i]) achievement.earn(i);
+        else if (achievement.type[i] == "energybuilding" && achievement.energybuildingIndex[i] >= achievement.requirement[i]) achievement.earn(i);
+        else if (achievement.type[i] == "researchbuilding" && achievement.researchbuildingIndex[i] >= achievement.requirement[i]) achievement.earn(i);
+    }
+
     if (upgrade.purchased[53] == true){
         game.metal += game.getMetalPerSecond() * (0.01*game.energy);
         game.totalmetalmined += game.getMetalPerSecond() * (0.01*game.energy);
@@ -1817,6 +1953,7 @@ setInterval (function() {
     display.updateGenerators();
     display.updateResearch();
     display.updateUpgrades();
+    display.updateAchievements();
 }, 1000);
 
 
