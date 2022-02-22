@@ -7,7 +7,7 @@
     position: left;
 
 }
-
+/* This isn't shouldn't be needed anymore
 .colums6 {
     columns: 6;
 }
@@ -20,6 +20,7 @@
 .colums4 {
     columns: 4;
 }
+*/
 .toptext{
     position: fixed;
     top: 0%;
