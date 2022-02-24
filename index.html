@@ -5,29 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <!--<link rel="stylesheet" href="css/styles.css">-->
+    <link rel="stylesheet" href="css/new_styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=B612+Mono&family=Space+Mono&display=swap" rel="stylesheet">
     <title>Idle</title>
 </head>
 
-<body style="background-color:#2b2b2b">
+<body>
     <div class="container-fluid">
         <p class="sectionright">v 0.152</P>
-        <div class="currencies row">
-            <div class="metal-currency orangetext"><span id="metal"> 0</span></div>
-            <div class="energy-currency bluetext"><span id="energyproduction"> 0</span></div>
-            <div class="tech-currency greentext"><span id="techpoints"> 0</span></div>
+        <div class="currencies row text-center">
+            <div class="metal-currency orangetext col"><span id="metal"> 0</span></div>
+            <div class="energy-currency bluetext col"><span id="energyproduction"> 0</span></div>
+            <div class="tech-currency greentext col"><span id="techpoints"> 0</span></div>
         </div>
         <div class="achievementPopup"></div>
-        <div class="navbuttons">
-            <div id="miningtab" class="tabsContainermining " onclick="tab('miningMenu')">METAL</div>
-            <div id="energytab" class="tabsContainerenergy " onclick="tab('energyMenu')">ENERGY/S</div> <br>
-            <div id="reseachtab" class="tabsContainerresearch " onclick="tab('researchMenu')">TECH POINTS</div>
+        <div class="navbuttons row row-cols-3 text-center">
+            <div id="miningtab col" class="tabsContainermining " onclick="tab('miningMenu')">METAL</div>
+            <div id="energytab col" class="tabsContainerenergy " onclick="tab('energyMenu')">ENERGY/S</div>
+            <div id="reseachtab col" class="tabsContainerresearch " onclick="tab('researchMenu')">TECH POINTS</div>
         </div>
         <div id="miningMenu">
             <div class="currenciespersec">
-                <div class="whitetext">You are currently gaining <span class="orangetext" id="metalproduction"> 0
+                <div class="text-center">You are currently gaining <span class="orangetext" id="metalproduction"> 0
                     </span>
                     metal/s <span id="metalproductionboost"></span></div>
             </div>
@@ -35,7 +36,7 @@
             <span class="bluetext"></span>
         </div>
         <div id="energyMenu">
-            <div class="currenciespersec whitetext">Your energy buildings are pruducing a total of <span
+            <div class="currenciespersec text-center">Your energy buildings are pruducing a total of <span
                     class="bluetext" id="energyproductiontwo">0</span> Energy/s, your <span class="greentext">Research
                     buildings</span> are
                 using <span class="bluetext" id="energyusage"></span> Energy/s, leaving you with a surplus of <span
@@ -47,7 +48,7 @@
             </div>
         </div>
         <div id="researchMenu">
-            <div class="currenciespersec whitetext">Every <span class="greentext" id="techtime"></span> seconds your
+            <div class="currenciespersec text-center">Every <span class="greentext" id="techtime"></span> seconds your
                 scientists have <span class="greentext" id="techpercent"></span>% chance to make a discovery, and award
                 you
                 with <span class="greentext" id="techamount"></span> tech points
