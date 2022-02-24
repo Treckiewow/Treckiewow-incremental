@@ -1,15 +1,17 @@
 var game = {
-    metal: 10,                //variable gets saved
+    metal: 100000000,                //variable gets saved
     totalmetal: 0,                      //variable gets saved
     totalmetalmined: 0,                 //variable gets saved
     metalpersecondtwo: 0,               //variable gets saved
     energy: 0,                    //variable gets saved
     railguninterval: 1800000,      //1800000                   //variable gets saved
     railgunstartinterval: 1800000,  //1800000 
-    techpoints: 0,               //variable gets saved
+    techpoints: 10000000,               //variable gets saved
     techinterval: 10000,                //variable gets saved
     absoluteenergy: 0,                  //variable gets saved
     qd: false,                          //variable gets saved
+    achievementamount: 0,                //variable gets saved
+    upgradecount: 0,                //variable gets saved
     prog: 0,
     railguntick: 0,                 
     railgunperc: 0,
@@ -86,6 +88,7 @@ setInterval (function() {
         display.updateResearch();
         display.updateUpgrades();
         display.updateResearchding();
+        display.updateAchievements();
     }
     game.railgunperc = (game.railguntick / game.railguninterval)*100
 
@@ -112,6 +115,7 @@ setTimeout(function doSomething() {
         display.updateResearch();
         display.updateUpgrades();
         display.updateResearchding();
+        display.updateAchievements();
     }
         setTimeout(doSomething, game.techinterval);
 }, game.techinterval);
@@ -163,9 +167,9 @@ var metalbuilding = {
         4200,
         48000,
         550000,
-        26000000,
-        380000000,
-        9000000000
+        660000000,
+        4300000000,
+        120000000000
     ],
     totalincome: [                  //variable gets saved
         0,
@@ -205,6 +209,7 @@ var metalbuilding = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
             }
 
@@ -293,6 +298,7 @@ var metalbuilding = {
                     display.updateResearch();
                     display.updateUpgrades();
                     display.updateResearchding();
+                    display.updateAchievements();
     
                 }
     
@@ -322,6 +328,7 @@ var metalbuilding = {
             display.updateResearch();
             display.updateUpgrades();
             display.updateResearchding();
+            display.updateAchievements();
         }
     
     
@@ -390,6 +397,7 @@ var researchbuildingt2 = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
             }
             if (this.type[index] == "TSA" && game.techpoints >= this.techcost[index]) {
@@ -405,6 +413,7 @@ var researchbuildingt2 = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
             }
         }
 
@@ -490,6 +499,7 @@ var energybuilding = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
             }
         }
@@ -521,6 +531,7 @@ var energybuilding = {
                         display.updateResearch();
                         display.updateUpgrades();
                         display.updateResearchding();
+                        display.updateAchievements();
         
                     }
                 } 
@@ -538,7 +549,84 @@ var achievement = {
         "Mine 1e15 Metal",
         "Mine 1e18 Metal",
         "Mine 1e21 Metal",
-        "Mine 1e24 Metal"
+        "Mine 1e24 Metal",
+        "25 Shovels",
+        "50 Shovels",
+        "75 Shovels",
+        "100 Shovels",
+        "25 Tricone Drills",
+        "50 Tricone Drills",
+        "75 Tricone Drills",
+        "100 Tricone Drills",
+        "25 Bobcats",
+        "50 Bobcats",
+        "75 Bobcats",
+        "100 Bobcats",
+        "25 Caterpillar 6090s",
+        "50 Caterpillar 6090s",
+        "75 Caterpillar 6090s",
+        "100 Caterpillar 6090s",
+        "25 Moon Drills",
+        "50 Moon Drills",
+        "75 Moon Drills",
+        "100 Moon Drills",
+        "25 Asteroid Collectors",
+        "50 Asteroid Collectors",
+        "75 Asteroid Collectors",
+        "100 Asteroid Collectors",
+        "25 Ion Drills",
+        "50 Ion Drills",
+        "75 Ion Drills",
+        "100 Ion Drills",
+        "25 Planetary extractors",
+        "50 Planetary extractors",
+        "75 Planetary extractors",
+        "100 Planetary extractors",
+        "25 Solar Panels",
+        "50 Solar Panels",
+        "75 Solar Panels",
+        "100 Solar Panels",
+        "25 Hydropower plants",
+        "50 Hydropower plants",
+        "75 Hydropower plants",
+        "100 Hydropower plants",
+        "25 Geothermal plants",
+        "50 Geothermal plants",
+        "75 Geothermal plants",
+        "100 Geothermal plants",
+        "25 Nuclear power plants",
+        "50 Nuclear power plants",
+        "75 Nuclear power plants",
+        "100 Nuclear power plants",
+        "25 Solar sails",
+        "50 Solar sails",
+        "75 Solar sails",
+        "100 Solar sails",
+        "25 Labs",
+        "50 Labs",
+        "75 Labs",
+        "100 Labs",        
+        "25 Supercomputers",
+        "50 Supercomputers",
+        "25 Quantum computers",
+        "50 Quantum computers",
+        "75 Quantum computers",
+        "100 Quantum computers",
+        "10 upgrades",
+        "20 upgrades",
+        "30 upgrades",
+        "40 upgrades",
+        "50 upgrades",
+        "60 upgrades",
+        "70 upgrades",
+        "80 upgrades",
+        "90 upgrades",
+        "100 upgrades"
+
+        
+
+
+
 
 
     ],
@@ -551,8 +639,87 @@ var achievement = {
         "You've successfully mined 1e18 Metal!",
         "You've successfully mined 1e21 Metal!",
         "You've successfully mined 1e24 Metal!",
+        "Build 25 Shovels",
+        "Build 50 Shovels",
+        "Build 75 Shovels",
+        "Build 100 Shovels",
+        "Build 25 Tricone Drills",
+        "Build 50 Tricone Drills",
+        "Build 75 Tricone Drills",
+        "Build 100 Tricone Drills",
+        "Build 25 Bobcats",
+        "Build 50 Bobcats",
+        "Build 75 Bobcats",
+        "Build 100 Bobcats",
+        "Build 25 Caterpillar 6090s",
+        "Build 50 Caterpillar 6090s",
+        "Build 75 Caterpillar 6090s",
+        "Build 100 Caterpillar 6090s",
+        "Build 25 Moon Drills",
+        "Build 50 Moon Drills",
+        "Build 75 Moon Drills",
+        "Build 100 Moon Drills",
+        "Build 25 Asteroid Collectors",
+        "Build 50 Asteroid Collectors",
+        "Build 75 Asteroid Collectors",
+        "Build 100 Asteroid Collectors",
+        "Build 25 Ion Drills",
+        "Build 50 Ion Drills",
+        "Build 75 Ion Drills",
+        "Build 100 Ion Drills",
+        "Build 25 Planetary extractors",
+        "Build 50 Planetary extractors",
+        "Build 75 Planetary extractors",
+        "Build 100 Planetary extractors",
+        "Build 25 Solar Panels",
+        "Build 50 Solar Panels",
+        "Build 75 Solar Panels",
+        "Build 100 Solar Panels",
+        "Build 25 Hydropower plants",
+        "Build 50 Hydropower plants",
+        "Build 75 Hydropower plants",
+        "Build 100 Hydropower plants",
+        "Build 25 Geothermal power plants",
+        "Build 50 Geothermal power plants",
+        "Build 75 Geothermal power plants",
+        "Build 100 Geothermal power plants",
+        "Build 25 Nuclear power plants",
+        "Build 50 Nuclear power plants",
+        "Build 75 Nuclear power plants",
+        "Build 100 Nuclear power plants",
+        "Build 25 Solar sails",
+        "Build 50 Solar sails",
+        "Build 75 Solar sails",
+        "Build 100 Solar sails",
+        "Build 25 Labs",
+        "Build 50 Labs",
+        "Build 75 Labs",
+        "Build 100 Labs",
+        "Build 25 Supercomputers",
+        "Build 36 (max) Supercomputers",
+        "Build 25 Quantum computers",
+        "Build 50 Quantum computers",
+        "Build 75 Quantum computers",
+        "Build 100 Quantum computers",
+        "Research 10 upgrades",
+        "Research 20 upgrades",
+        "Research 30 upgrades",
+        "Research 40 upgrades",
+        "Research 50 upgrades",
+        "Research 60 upgrades",
+        "Research 70 upgrades",
+        "Research 80 upgrades",
+        "Research 90 upgrades",
+        "Research 100 upgrades"
+
 
     ],
+    
+    
+    
+    
+    
+    
     type: [
         "Metal",
         "Metal",
@@ -561,9 +728,86 @@ var achievement = {
         "Metal",
         "Metal",
         "Metal",
-        "Metal"
+        "Metal",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "metalbuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "energybuilding",
+        "researchbuilding",  
+        "researchbuilding", 
+        "researchbuilding", 
+        "researchbuilding", 
+        "researchbuilding",  
+        "researchbuilding", 
+        "researchbuilding", 
+        "researchbuilding", 
+        "researchbuilding",  
+        "researchbuilding",
+        "upgrade",
+        "upgrade",
+        "upgrade",
+        "upgrade",
+        "upgrade",
+        "upgrade",
+        "upgrade",
+        "upgrade",
+        "upgrade",
+        "upgrade"
+
     ],
-    requirement: [
+  
+  
+  
+  
+  requirement: [
         1000,
         1000000,
         1000000000,
@@ -571,7 +815,79 @@ var achievement = {
         1000000000000000,
         1000000000000000000,
         1000000000000000000000,
-        1000000000000000000000000
+        1000000000000000000000000,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        50,
+        75,
+        100,
+        25,
+        36,
+        25,
+        50,
+        75,
+        100,
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100
     ],
     metalbuildingIndex: [
         -1,
@@ -581,8 +897,81 @@ var achievement = {
         -1,
         -1,
         -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        5,
+        6,
+        6,
+        6,
+        6,
+        7,
+        7,
+        7,
+        7,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
         -1
     ],
+    
     energybuildingIndex: [
         -1,
         -1,
@@ -591,9 +980,158 @@ var achievement = {
         -1,
         -1,
         -1,
-        -1
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        3,
+        4,
+        4,
+        4,
+        4,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+
+
     ],
+   
+   
+   
     researchbuildingIndex: [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        -1,
+        -1,
         -1,
         -1,
         -1,
@@ -611,13 +1149,127 @@ var achievement = {
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
+
     ],
 
     awarded: [false],
 
     earn: function(index) {
-        this.awarded[index] = true;
+        if(!this.awarded[index]) {
+            this.awarded[index] = true;
+            game.achievementamount += 1;
+            document.getElementById("achievementearned").innerHTML= '<div class="achievementPopup">Achievement unlocked! <br> '+this.name[index]+'</p></div>';
+                setTimeout(function(){
+                    document.getElementById("achievementearned").innerHTML = "";
+                }, 3000);
+
+            
+        }
 
 
 
@@ -705,7 +1357,8 @@ var upgrade = {
         "AI research",
         "The singularity",
         "Automated Construction Complex blueprints",
-        "Next stage soon™"
+        "Next stage soon™",
+        "Prestigious mining"
 
 
 
@@ -768,7 +1421,8 @@ var upgrade = {
         "AI has the potential to transcends human intelligence. AI research boost technological discoveries by 100 Tech points per discovery.",
         "Artifical intelligence lives among us, most humans are connected through implants that allow us to co-exist without an AI uprising... yet. The Singularity boost technological discoveries by 666.666 Tech points per discovery.",
         "The same automation that makes Railgun launchers able to construct and deliver Solar sails in orbit, can be used to automate the construction of Planetary extractors or Railgun launchers.",
-        "Interstellar space travel is still far from our reach, but now that you've started exploring the solar system, some visualization of when the next stage of your civilization will begin has become available."
+        "Interstellar space travel is still far from our reach, but now that you've started exploring the solar system, some visualization of when the next stage of your civilization will begin has become available.",
+        "Your prestigeous ways of racking up achievements have boosted your workerforce to work extra! Each achievement boosts metalproduction by +5%"
     ],
     type: [
         "metalbuilding",
@@ -821,14 +1475,15 @@ var upgrade = {
         "Findinggold",			//[47]
         "bobcatbuilding",
         "metalbuilding",
-        "metalbuilding",        //50
+        "moondrill",        //50
         "asteroidbuilding",
         "railgunlauncher",
         "civilization",
         "aiupgrade",
         "researchbuilding",
         "railgunreq",
-        "truebuilding"          //57
+        "truebuilding",          //57
+        "achievement"
     ],
     cost: [
         15,         //br shovel
@@ -888,7 +1543,8 @@ var upgrade = {
         100000,
         10000000,
         100000,
-        1000
+        1000,
+        250
 
     ],
     metalbuildingIndex: [
@@ -949,7 +1605,8 @@ var upgrade = {
         0,
         0,
         0,
-        5
+        5,
+        0
 
     ],
     researchbuildingIndex: [
@@ -1010,6 +1667,7 @@ var upgrade = {
         1,
         0,
         0,
+        0,
         0
     
     ],
@@ -1062,6 +1720,7 @@ var upgrade = {
         0,
         0,
         2,			//[47]
+        0,
         0,
         0,
         0,
@@ -1132,7 +1791,8 @@ var upgrade = {
         36,
         50,
         1,
-        1
+        1,
+        5
     ],
     bonus: [
         2,
@@ -1192,9 +1852,9 @@ var upgrade = {
         100,
         667,
         0,
-        0
+        0,
+        1
     ],
-
     purchased: [false],             //variable gets saved
 
     purchase: function(index) {
@@ -1204,6 +1864,7 @@ var upgrade = {
                 researchbuilding.increase[0] += this.bonus[index];
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 for (i = 0; i < researchbuilding.name.length; i++) {
                     researchbuilding.totalincome[0] = (researchbuilding.increase[0]) * (researchbuilding.count[0]);
                     researchbuilding.totalincome[1] = (researchbuilding.increase[1] * researchbuilding.count[1]);
@@ -1215,70 +1876,96 @@ var upgrade = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
             } 
-            if (this.type[index] == "railgunreq" && constructorbuilding.count[0] >= this.requirement[index]) {
+
+            if (this.type[index] == "achievement" && game.achievementamount >= this.requirement[index]) {
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 display.updateEnergy();
                 display.updateMetal();
                 display.updateGenerators();
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
+            
+            }
+            if (this.type[index] == "railgunreq" && constructorbuilding.count[0] >= this.requirement[index]) {
+                game.techpoints -= this.cost[index];
+                this.purchased[index] = true;
+                game.upgradecount += 1;
+                display.updateEnergy();
+                display.updateMetal();
+                display.updateGenerators();
+                display.updateResearch();
+                display.updateUpgrades();
+                display.updateResearchding();
+                display.updateAchievements();
             
             }
             if (this.type[index] == "truebuilding" && metalbuilding.count[this.metalbuildingIndex[index]] >= this.requirement[index]) {
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 display.updateEnergy();
                 display.updateMetal();
                 display.updateGenerators();
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
             
             }
 
             if (this.type[index] == "civilization" && energybuilding.count[this.energybuildingIndex[index]] >= this.requirement[index]) {
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 display.updateEnergy();
                 display.updateMetal();
                 display.updateGenerators();
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
             
             }
 
             if (this.type[index] == "Findinggold" && energybuilding.count[this.energybuildingIndex[index]] >= this.requirement[index]) {
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 display.updateEnergy();
                 display.updateMetal();
                 display.updateGenerators();
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
             
             }
 
             if (this.type[index] == "railgunlauncher" && metalbuilding.count[this.metalbuildingIndex[index]] >= this.requirement[index]) {
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 display.updateEnergy();
                 display.updateMetal();
                 display.updateGenerators();
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
             
             }
 
             if (this.type[index] == "asteroidbuilding" && researchbuilding.count[this.researchbuildingIndex[index]] >= this.requirement[index]) {
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 metalbuilding.income[5] *= this.bonus[index];
                 game.metalpersecondtwo = game.getMetalPerSecond();
                 for (i = 0; i < metalbuilding.name.length; i++) {
@@ -1291,11 +1978,13 @@ var upgrade = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
             }
             if (this.type[index] == "triconeupgrade" && metalbuilding.count[this.metalbuildingIndex[index]] >= this.requirement[index]) {
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 metalbuilding.income[1] *= this.bonus[index];
                 game.metalpersecondtwo = game.getMetalPerSecond();
                 for (i = 0; i < metalbuilding.name.length; i++) {
@@ -1308,12 +1997,14 @@ var upgrade = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
             }
             if (this.type[index] == "bobcatbuilding" && researchbuilding.count[this.researchbuildingIndex[index]] >= this.requirement[index]) {
                 game.techpoints -= this.cost[index];
                 metalbuilding.income[this.metalbuildingIndex[index]] *= this.bonus[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 game.metalpersecondtwo = game.getMetalPerSecond();
                 for (i = 0; i < metalbuilding.name.length; i++) {
                     metalbuilding.totalincome[i] = metalbuilding.income[i] * (metalbuilding.count[i]); 
@@ -1326,14 +2017,17 @@ var upgrade = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
                 
 
-            }
+    
+}
             if (this.type[index] == "metalbuilding" && metalbuilding.count[this.metalbuildingIndex[index]] >= this.requirement[index]) {
                 game.techpoints -= this.cost[index];
                 metalbuilding.income[this.metalbuildingIndex[index]] *= this.bonus[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 game.metalpersecondtwo = game.getMetalPerSecond();
                 for (i = 0; i < metalbuilding.name.length; i++) {
                     metalbuilding.totalincome[i] = metalbuilding.income[i] * (metalbuilding.count[i]); 
@@ -1346,14 +2040,35 @@ var upgrade = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
                 
 
             }  
+            if (this.type[index] == "moondrill" && metalbuilding.count[this.metalbuildingIndex[index]] >= this.requirement[index]) {
+                game.techpoints -= this.cost[index];
+                metalbuilding.income[4] *= this.bonus[index];
+                this.purchased[index] = true;
+                game.upgradecount += 1;
+                game.metalpersecondtwo = game.getMetalPerSecond();
+                for (i = 0; i < metalbuilding.name.length; i++) {
+                    metalbuilding.totalincome[i] = metalbuilding.income[i] * (metalbuilding.count[i]); 
+                    metalbuilding.partoftotal[i] = metalbuilding.totalincome[i] / (game.metalpersecondtwo)
+                             
+                }
+                display.updateEnergy();
+                display.updateMetal();
+                display.updateGenerators();
+                display.updateResearch();
+                display.updateUpgrades();
+                display.updateResearchding();
+                display.updateAchievements();
+            }
             if (this.type[index] == "researchbuilding" && researchbuilding.count[this.researchbuildingIndex[index]] >= this.requirement[index]) {
                 researchbuilding.increase[this.researchbuildingIndex[index]] += this.bonus[index];
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 for (i = 0; i < researchbuilding.name.length; i++) {
                     researchbuilding.totalincome[0] = (researchbuilding.increase[0]) * (researchbuilding.count[0]);
                     researchbuilding.totalincome[1] = (researchbuilding.increase[1] * researchbuilding.count[1]);
@@ -1365,6 +2080,7 @@ var upgrade = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
             } 
             if (this.type[index] == "energybuilding" && energybuilding.count[this.energybuildingIndex[index]] >= this.requirement[index]) {
@@ -1372,6 +2088,7 @@ var upgrade = {
                 energybuilding.income[this.energybuildingIndex[index]] *= this.bonus[index];
                 game.techpoints -= this.cost[index];
                 this.purchased[index] = true;
+                game.upgradecount += 1;
                 
                 for (i = 0; i < energybuilding.name.length; i++) {
                     energybuilding.absoluteincome[i] = energybuilding.income[i] * (energybuilding.count[i]);
@@ -1392,6 +2109,7 @@ var upgrade = {
                 display.updateResearch();
                 display.updateUpgrades();
                 display.updateResearchding();
+                display.updateAchievements();
 
             } 
 
@@ -1417,8 +2135,8 @@ var display = {
     updateMetal: function() {
         document.getElementById("metalproductionboost").innerHTML = "";
         document.getElementById("gameover").innerHTML = "";
-        document.getElementById("metal").innerHTML = format(Math.round(game.metal * 100) / 100);
         document.getElementById("metalproduction").innerHTML = "";
+        document.getElementById("metal").innerHTML = format(Math.round(game.metal * 100) / 100);
         document.getElementById("progressperc").innerHTML = format(game.prog*100)/100;
         document.getElementById("railbarperc").innerHTML = 'Automated construction progress: '+format(game.railgunperc*100)/100+'%';
         document.title = "NaNNaNNaNNaN Batman";
@@ -1433,13 +2151,33 @@ var display = {
         if (upgrade.purchased[57] == true) {
             document.getElementById("progressBar").classList.remove("hidden")
         }
-        if (upgrade.purchased[53] == true){ 
-            document.getElementById("metalproduction").innerHTML = format((game.getMetalPerSecond())*(format(0.01*game.energy)));
-        } else document.getElementById("metalproduction").innerHTML = format(game.getMetalPerSecond());
+        if (upgrade.purchased[58] == true && upgrade.purchased[53] == true) {
+            document.getElementById("metalproductionboost").innerHTML += '(<span class="orangetext">'+format(game.getMetalPerSecond())+'</span> boosted by <span class="bluetext">'+format(0.01*game.energy)+'</span>% and multiplied by <span class="purpletext">'+format(5*game.achievementamount)+'</span>)';
+        }
+        if (upgrade.purchased[58] == true && upgrade.purchased[53] != true) {
+            document.getElementById("metalproductionboost").innerHTML += '(<span class="orangetext">'+format(game.getMetalPerSecond())+'</span> multiplied by <span class="purpletext">'+format(5*game.achievementamount)+'</span>)';
 
-        if (upgrade.purchased[53] == true){ 
+        }
+        if (upgrade.purchased[58] != true && upgrade.purchased[53] == true) {
             document.getElementById("metalproductionboost").innerHTML += '(<span class="orangetext">'+format(game.getMetalPerSecond())+'</span> boosted by <span class="bluetext">'+format(0.01*game.energy)+'</span>%)';
         }
+        if (upgrade.purchased[58] == true && upgrade.purchased[53] == true) {
+            document.getElementById("metalproduction").innerHTML = format(game.getMetalPerSecond() * (0.01*game.energy) * (5*game.achievementamount));
+        }
+        if (upgrade.purchased[58] == true && upgrade.purchased[53] != true) {
+            document.getElementById("metalproduction").innerHTML = format(game.getMetalPerSecond() * (5*game.achievementamount));
+        }
+        if (upgrade.purchased[58] != true && upgrade.purchased[53] != true) {
+            document.getElementById("metalproduction").innerHTML = format(game.getMetalPerSecond());
+        }
+        if (upgrade.purchased[58] != true && upgrade.purchased[53] == true) {
+            document.getElementById("metalproduction").innerHTML = format(game.getMetalPerSecond() * (0.01*game.energy));
+        }
+
+
+
+
+
         if (game.totalmetalmined >= 100000000000000000000000000) {
             document.getElementById("gameover").innerHTML = "GAME OVER THANKS FOR PLAYING, STAY TUNED FOR UPDATES ON DISCORD.GG/TRECKIE, AND FEEL FREE TO DROP SOME FEEDBACK!";
         }
@@ -1447,34 +2185,84 @@ var display = {
 
     updateGenerators: function() {
 
-        document.getElementById("metalgenContainer").innerHTML = "";
+        var updateGeneratorHTML = "";
 
                 for (i = 0; i < metalbuilding.name.length; i++) {
 
                     if (metalbuilding.name[i] == "Shovel") {
                         if (metalbuilding.cost[0] <= game.metal) 
-                        document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip canafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div><div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
-                        else  document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip cantafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div>   <div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
+                        updateGeneratorHTML += '<div class="metalgenContainer tooltip canafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div><div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
+                        else  updateGeneratorHTML += '<div class="metalgenContainer tooltip cantafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div>   <div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
                     }
                     if (metalbuilding.count[i-1] >= 1 && metalbuilding.name[i] != "Shovel") {
                         if (metalbuilding.cost[i] <= game.metal) 
-                        document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip canafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div><div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
-                        else  document.getElementById("metalgenContainer").innerHTML += '<div class="metalgenContainer tooltip cantafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div>   <div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
+                        updateGeneratorHTML += '<div class="metalgenContainer tooltip canafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div><div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
+                        else  updateGeneratorHTML += '<div class="metalgenContainer tooltip cantafford colums6 row" onclick="metalbuilding.purchase('+i+')"><div class="col">'+metalbuilding.name[i]+'</div> <div class="col">'+metalbuilding.count[i]+'</div><div class="col">'+format(metalbuilding.income[i])+' Metal/s</div><div class="col">Total '+format(metalbuilding.totalincome[i])+' Metal/s</div>   <div class="col">Costs: '+format(metalbuilding.cost[i])+' Metal</div><div class="col">'+format(metalbuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext">The next '+metalbuilding.name[i]+' you buy will produce <span class="orangetext">'+format((metalbuilding.income[i]/metalbuilding.cost[i])*10000000)/100+'</span> Metal/s for each <span class="orangetext">100 000</span> Metal spent, and increase total Metal/s production by '+format((metalbuilding.income[i]/(game.metalpersecondtwo))*10000)/100+'%. You have '+metalbuilding.count[i]+' '+metalbuilding.name[i]+'s, each producing <span class="orangetext">'+metalbuilding.income[i]+'</span> Metal/s (for a total of <span class="orangetext">'+metalbuilding.totalincome[i]+'</span> Metal/s)</span></div><br>'
                     }
                 }  
+                document.getElementById("metalgenContainer").innerHTML = updateGeneratorHTML;
                
 
     },
 
+   
+
+
+
+
+
+
+    updateEnergy: function() {
+
+        document.getElementById("energyproduction").innerHTML = format(game.energy);
+        document.getElementById("energyproductiontwo").innerHTML = format(game.absoluteenergy);
+        document.getElementById("energysurplus").innerHTML = format(game.energy);
+        document.getElementById("energyusage").innerHTML = format(game.absoluteenergy - game.energy);
+
+
+        var updateEnergyHTML = "";
+
+        for (i = 0; i < energybuilding.name.length; i++) {
+            if (energybuilding.name[i] == "Solar Panel") {
+                if (energybuilding.cost[i] <= game.metal) {
+                    updateEnergyHTML += '<div class="energyContainer tooltip canafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+(energybuilding.count[i])+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div><div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy per <span class="orangetext">100.000</span> Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
+                }
+                else  {
+                    updateEnergyHTML += '<div class="energyContainer tooltip cantafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+(energybuilding.count[i])+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div>   <div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy <span class="orangetext">100.000</span> per Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
+                }
+            }
+
+            if (energybuilding.count[i-1] >= 1 && energybuilding.name[i] != "Solar Panel") {
+                if (energybuilding.cost[i] <= game.metal) 
+                updateEnergyHTML += '<div class="energyContainer tooltip canafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+energybuilding.count[i]+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div><div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy per <span class="orangetext">100.000</span> Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
+                else  updateEnergyHTML += '<div class="energyContainer tooltip cantafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+energybuilding.count[i]+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div>   <div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy <span class="orangetext">100.000</span> per Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
+            }
+        }  
+        document.getElementById("energyContainer").innerHTML = updateEnergyHTML;
+
+
+
+
+        var constructorContainerHTML ="";
+        for (i = 0; i < constructorbuilding.name.length; i++) {
+            if (upgrade.purchased[52] == true) {
+                if (constructorbuilding.cost[i] <= game.metal) 
+                constructorContainerHTML += '<div class="constructorContainer tooltip canafford colums4 row" onclick="constructorbuilding.purchase('+i+')"><div class="col">'+constructorbuilding.name[i]+'</div> <div class="col">'+constructorbuilding.count[i]+'</div><div class="col">Costs: '+format(constructorbuilding.cost[i])+' Metal</div><div class="col">Produces '+constructorbuilding.count[i]+' Solar sails every '+format(((game.railguninterval/60000))*1000)/1000+' minutes</div><span class="tooltiptext">The railgun launcher comes complete with a fully equipped assembly line for solar sails. Automatically created Solar sails does not increase the cost of manually built Solar sails.</span></div><br>'
+                else  constructorContainerHTML += '<div class="constructorContainer tooltip cantafford colums4 row" onclick="constructorbuilding.purchase('+i+')"><div class="col">'+constructorbuilding.name[i]+'</div> <div class="col">'+constructorbuilding.count[i]+'</div><div class="col">Costs: '+format(constructorbuilding.cost[i])+' Metal</div><div class="col">Produces '+constructorbuilding.count[i]+' Solar sails every '+format(((game.railguninterval/60000))*1000)/1000+' minutes</div><span class="tooltiptext">The railgun launcher comes complete with a fully equipped assembly line for solar sails. Automatically created Solar sails does not increase the cost of manually built Solar sails.</span></div><br>'
+   
+            }
+        }
+        document.getElementById("constructorContainer").innerHTML = constructorContainerHTML;
+    },
+
+
+
+
     updateResearch: function() {
         document.getElementById("researchContainer").innerHTML = "";
         document.getElementById("researcht2Container").innerHTML = "";
-        document.getElementById("selling").innerHTML = "";
-
-
         document.getElementById("techpoints").innerHTML = game.techpoints;
-
-                    document.getElementById("selllabContainer").innerHTML = '<div class="selllabContainer" onclick="researchbuilding.sell('+0+')")><p> Sell Lab</p>';
+        document.getElementById("selllabContainer").innerHTML = '<div class="selllabContainer" onclick="researchbuilding.sell('+0+')")><p> Sell Lab</p>';
 
         if (researchbuilding.count[1] >= 1 || game.qd==true){
             document.getElementById("sellcompContainer").innerHTML = '<div class="sellcompContainer" onclick="researchbuilding.sell('+1+')")><p> Sell Supercomputer</p>';
@@ -1483,13 +2271,19 @@ var display = {
         if (researchbuilding.count[2] >= 1 || game.qd==true){
             document.getElementById("sellqcompContainer").innerHTML = '<div class="sellqcompContainer" onclick="researchbuilding.sell('+2+')")><p> Sell Quantum Computer</p>';
         }
+
+
+
+
+
+        
         if (researchbuilding.metalcost[0] <= game.metal && researchbuilding.energycost[0] <= game.energy) 
             document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip canafford colums5 row" onclick="researchbuilding.purchase('+0+')")><div class="col">'+researchbuilding.name[0]+'</div><div class="col">'+researchbuilding.count[0]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[0])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[0])+' Energy/s</div> <div class="col">'+researchbuilding.totalincome[0]+' per procc</div><span class="tooltiptext"> Buying a '+researchbuilding.name[0]+' will increase the amount of tech points per discovery by '+researchbuilding.increase[0]+' </span><br>'
         else  document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5 row"onclick="researchbuilding.purchase('+0+')")><div class="col"> '+researchbuilding.name[0]+'</div><div class="col">'+researchbuilding.count[0]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[0])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[0])+' Energy/s</div><div class="col">'+researchbuilding.totalincome[0]+'per procc</div><span class="tooltiptext"> Buying a '+researchbuilding.name[0]+' will increase the amount of tech points per discovery by '+researchbuilding.increase[0]+' </span><br>'
 
 
         if (researchbuilding.count[0] >= 1 || game.qd==true) {
-            document.getElementById("selling").innerHTML = "Selling a research building does not return the metal used to build it.";
+            document.getElementById("selling").classList.remove("hidden")
             if (researchbuilding.count[1] <= 35){
                 if (researchbuilding.metalcost[1] <= game.metal && researchbuilding.energycost[1] <= game.energy && researchbuilding.count[1] <= 35) 
                     document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip canafford colums5 row" onclick="researchbuilding.purchase('+1+')")><div class="col">'+researchbuilding.name[1]+'</div><div class="col">'+researchbuilding.count[1]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[1])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[1])+' Energy/s</div> <div class="col">'+format(researchbuilding.totalincome[1])+'% increase</div><span class="tooltiptext"> Buying a '+researchbuilding.name[1]+' will increase the chance of making a discovery by '+researchbuilding.increase[1]+' percentage points </span><br>'
@@ -1501,6 +2295,13 @@ var display = {
                 document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip canafford colums5 row" onclick="researchbuilding.purchase('+2+')")><div class="col">'+researchbuilding.name[2]+'</div><div class="col">'+researchbuilding.count[2]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[2])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[2])+' Energy/s</div> <div class="col">Every '+researchbuilding.totalincome[2]+' seconds</div><span class="tooltiptext"> Buying a '+researchbuilding.name[2]+' will decrease the time between each discovery by '+format((1-(researchbuilding.increase[2]))*100)+'% </span><br>'
             else  document.getElementById("researchContainer").innerHTML += '<div class="researchContainer tooltip cantafford colums5 row"onclick="researchbuilding.purchase('+2+')")><div class="col"> '+researchbuilding.name[2]+'</div><div class="col">'+researchbuilding.count[2]+'</div><div class="col"> Costs: '+format(researchbuilding.metalcost[2])+' Metal</div><div class="col"> Costs: '+format(researchbuilding.energycost[2])+' Energy/s</div><div class="col">Every '+researchbuilding.totalincome[2]+' seconds</div><span class="tooltiptext"> Buying a '+researchbuilding.name[2]+' will decrease the time between each discovery by '+format((1-(researchbuilding.increase[2]))*100)+'% </span><br>'
         }
+
+
+
+
+
+
+
 
         if (upgrade.purchased[56] == true) {
             if (researchbuildingt2.metalcost[0] <= game.metal && researchbuildingt2.energycost[0] <= game.energy) 
@@ -1522,45 +2323,6 @@ var display = {
     },
 
 
-
-
-
-
-
-    updateEnergy: function() {
-
-        document.getElementById("energyproduction").innerHTML = format(game.energy);
-        document.getElementById("energyproductiontwo").innerHTML = format(game.absoluteenergy);
-        document.getElementById("energysurplus").innerHTML = format(game.energy);
-        document.getElementById("energyusage").innerHTML = format(game.absoluteenergy - game.energy);
-
-
-
-        document.getElementById("energyContainer").innerHTML = "";
-        for (i = 0; i < energybuilding.name.length; i++) {
-            if (energybuilding.name[i] == "Solar Panel") {
-                if (energybuilding.cost[i] <= game.metal) 
-                document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip canafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+format(energybuilding.count[i])+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div><div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy per <span class="orangetext">100.000</span> Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
-                else  document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip cantafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+format(energybuilding.count[i])+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div>   <div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy <span class="orangetext">100.000</span> per Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
-            }
-            if (energybuilding.count[i-1] >= 1 && energybuilding.name[i] != "Solar Panel") {
-                if (energybuilding.cost[i] <= game.metal) 
-                document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip canafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+energybuilding.count[i]+'</div><pdiv class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div><div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div> <span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy per <span class="orangetext">100.000</span> Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
-                else  document.getElementById("energyContainer").innerHTML += '<div class="energyContainer tooltip cantafford colums6 row" onclick="energybuilding.purchase('+i+')"><div class="col">'+energybuilding.name[i]+'</div> <div class="col">'+energybuilding.count[i]+'</div><div class="col">'+format(energybuilding.income[i]*10)/10+' Energy/s</div><div class="col">Total '+format(energybuilding.absoluteincome[i])+' Energy/s</div>   <div class="col">Costs: '+format(energybuilding.cost[i])+' Metal</div><div class="col">'+format(energybuilding.partoftotal[i]*100)+'% of total</div><span class="tooltiptext"> The next '+energybuilding.name[i]+' will produce <span class="bluetext">'+format(format(energybuilding.income[i])/format(energybuilding.cost[i])*10000000)/100+'</span> Energy <span class="orangetext">100.000</span> per Metal spent on building it. You have '+energybuilding.count[i]+' '+energybuilding.name[i]+'s, each producing <span class="bluetext">'+energybuilding.income[i]+'</span> Energy/s (for a total of <span class="bluetext">'+energybuilding.totalincome[i]+'</span> Energy/s)</span></div><br>'
-            }
-        }  
-        document.getElementById("constructorContainer").innerHTML = "";
-        for (i = 0; i < constructorbuilding.name.length; i++) {
-            if (upgrade.purchased[52] == true) {
-                if (constructorbuilding.cost[i] <= game.metal) 
-                document.getElementById("constructorContainer").innerHTML += '<div class="constructorContainer tooltip canafford colums4 row" onclick="constructorbuilding.purchase('+i+')"><div class="col">'+constructorbuilding.name[i]+'</div> <div class="col">'+constructorbuilding.count[i]+'</div><div class="col">Costs: '+format(constructorbuilding.cost[i])+' Metal</div><div class="col">Produces '+constructorbuilding.count[i]+' Solar sails every '+format(((game.railguninterval/60000))*1000)/1000+' minutes</div><span class="tooltiptext">The railgun launcher comes complete with a fully equipped assembly line for solar sails. Automatically created Solar sails does not increase the cost of manually built Solar sails.</span></div><br>'
-                else  document.getElementById("constructorContainer").innerHTML += '<div class="constructorContainer tooltip cantafford colums4 row" onclick="constructorbuilding.purchase('+i+')"><div class="col">'+constructorbuilding.name[i]+'</div> <div class="col">'+constructorbuilding.count[i]+'</div><div class="col">Costs: '+format(constructorbuilding.cost[i])+' Metal</div><div class="col">Produces '+constructorbuilding.count[i]+' Solar sails every '+format(((game.railguninterval/60000))*1000)/1000+' minutes</div><span class="tooltiptext">The railgun launcher comes complete with a fully equipped assembly line for solar sails. Automatically created Solar sails does not increase the cost of manually built Solar sails.</span></div><br>'
-   
-            }
-        }
-    },
-    
-
     updateResearchding: function() {
         document.getElementById("reseachtab").classList.remove("ding")
         document.getElementById("miningtab").classList.remove("ding")
@@ -1568,10 +2330,31 @@ var display = {
     },
 
     updateAchievements: function() {
-        document.getElementById("achievementContainer").innerHTML = "";
+      
+        document.getElementById("achievementcount").innerHTML = game.achievementamount;
+
+        if (upgrade.purchased[58] == true) {
+            document.getElementById("achievementboost").innerHTML = ' multiplying your metalproduction by <span class="purpletext">'+(5*game.achievementamount)+''
+        }
+
+        var updateAchievementHTML = "";
         for (i = 0; i < achievement.name.length; i++) {
             if (achievement.awarded[i]) {
-                document.getElementById("achievementContainer").innerHTML += '<div class="achievementContainer tooltip">'+achievement.name[i]+'<span class="tooltiptext">'+achievement.description[i]+'</span></div>'
+                updateAchievementHTML += '<div class="achievementContainer tooltip">'+achievement.name[i]+'<span class="tooltiptext">'+achievement.description[i]+'</span></div>'
+            }
+        }
+        document.getElementById("achievementContainer").innerHTML = updateAchievementHTML;
+
+
+        for (i = 0; i < achievement.name.length; i++) {
+            if(!achievement.awarded[i]) {
+                if (achievement.type[i] == "Metal" && game.totalmetalmined >= achievement.requirement[i]) achievement.earn(i);        
+                if (achievement.type[i] == "Energy" && game.absoluteenergy >= achievement.requirement[i]) achievement.earn(i);
+                if (achievement.type[i] == "Research" && game.techpoints >= achievement.requirement[i]) achievement.earn(i);
+                if (achievement.type[i] == "metalbuilding" && metalbuilding.count[achievement.metalbuildingIndex[i]] >= achievement.requirement[i]) achievement.earn(i);
+                if (achievement.type[i] == "energybuilding" && energybuilding.count[achievement.energybuildingIndex[i]] >= achievement.requirement[i]) achievement.earn(i);
+                if (achievement.type[i] == "researchbuilding" && researchbuilding.count[achievement.researchbuildingIndex[i]] >= achievement.requirement[i]) achievement.earn(i);
+                if (achievement.type[i] == "upgrade" && game.upgradecount >= achievement.requirement[i]) achievement.earn(i);
             }
         }
 
@@ -1581,76 +2364,88 @@ var display = {
     },
     updateUpgrades: function() {
 
-        document.getElementById("upgradeContainer").innerHTML = "";
+     var updateUpgradesHTML = "";
+
         for (i = 0; i < upgrade.name.length; i++) {
             if(!upgrade.purchased[i]) {
                 if (upgrade.type[i] == "metalbuilding" && metalbuilding.count[upgrade.metalbuildingIndex[i]] >= upgrade.requirement[i]) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                     
                 }
                 if (upgrade.type[i] == "researchbuilding" && researchbuilding.count[upgrade.researchbuildingIndex[i]] >= upgrade.requirement[i]) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "energybuilding" && energybuilding.count[upgrade.energybuildingIndex[i]] >= upgrade.requirement[i]) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "triconeupgrade" && metalbuilding.count[upgrade.metalbuildingIndex[i]] >= upgrade.requirement[i]) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "Findinggold" && energybuilding.count[upgrade.energybuildingIndex[i]] >= upgrade.requirement[i]) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "bobcatbuilding" && researchbuilding.count[upgrade.researchbuildingIndex[i]] >= upgrade.requirement[i]) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "asteroidbuilding" && researchbuilding.count[upgrade.researchbuildingIndex[i]] >= upgrade.requirement[i]) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "railgunlauncher" && metalbuilding.count[upgrade.metalbuildingIndex[i]] >= upgrade.requirement[i]) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "civilization" && researchbuildingt2.count[1] >= 10) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "aiupgrade" && researchbuilding.count[1] >= 36) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "railgunreq" && constructorbuilding.count[0] >= 1) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
                 }
                 if (upgrade.type[i] == "truebuilding" && metalbuilding.count[5] >= 1) {
                     if (upgrade.cost[i] <= game.techpoints) 
-                    document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
-                    else document.getElementById("upgradeContainer").innerHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext">'+upgrade.description[i]+'</span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                }
+                if (upgrade.type[i] == "moondrill" && metalbuilding.count[upgrade.metalbuildingIndex[i]] >= upgrade.requirement[i]) {
+                    if (upgrade.cost[i] <= game.techpoints) 
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    
+                }
+                if (upgrade.type[i] == "achievement" && game.achievementamount >= upgrade.requirement[i]) {
+                    if (upgrade.cost[i] <= game.techpoints) 
+                    updateUpgradesHTML += '<div class="upgradeContainer tooltip canafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    else updateUpgradesHTML += '<div class="upgradeContainer tooltip cantafford" onclick="upgrade.purchase('+i+')"><p>'+upgrade.name[i]+'<br>'+format(upgrade.cost[i])+' Tech Points</p><span class="tooltiptext"> '+upgrade.description[i]+' </span></div><br>'
+                    
                 }
             }
         }
+        document.getElementById("upgradeContainer").innerHTML = updateUpgradesHTML;
     }
 }
-
-
 var progress = document.getElementById('metalprogress');
 function updateValue(prog) {
     progress.style.width = prog+'%';
@@ -1817,6 +2612,7 @@ function loadGame() {
             }
         }
         if (typeof savedGame.qd !== "undefined") game.qd = savedGame.qd;
+        if (typeof savedGame.gameachievementamount !== "undefined") game.achievementamount = savedGame.gameachievementamount;
         if (typeof savedGame.railguntick !== "undefined") game.railguntick = savedGame.railguntick;
 
         if (typeof savedGame.achievementawarded !== "undefined") {          
@@ -1824,10 +2620,9 @@ function loadGame() {
                 achievement.awarded[i] = savedGame.achievementawarded[i];
             }
         }
+        if (typeof savedGame.gameupgradecount !== "undefined") game.upgradecount = savedGame.gameupgradecount;
     }
 }
-
-
 
 window.onload = function() {
     loadGame();
@@ -1890,7 +2685,9 @@ function saveGame() {
         researchbuildingt2totalincome: researchbuildingt2.totalincome,
         railguntick: game.railguntick,
         researchbuildingaddedenergycost: researchbuilding.addedenergycost,
-        achievementawarded: achievement.awarded
+        achievementawarded: achievement.awarded,
+        gameachievementamount: game.achievementamount,
+        gameupgradecount: game.upgradecount
 
 
     };
@@ -1919,22 +2716,26 @@ function resetGame() {
 
 
 setInterval (function() {
-    for (i = 0; i < achievement.name.length; i++) {
-        if (achievement.type[i] == "Metal" && game.totalmetalmined >= achievement.requirement[i]) achievement.earn(i);
-        else if (achievement.type[i] == "Energy" && game.absoluteenergy >= achievement.requirement[i]) achievement.earn(i);
-        else if (achievement.type[i] == "Research" && game.techpoints >= achievement.requirement[i]) achievement.earn(i);
-        else if (achievement.type[i] == "metalbuilding" && achievement.metalbuildingIndex[i] >= achievement.requirement[i]) achievement.earn(i);
-        else if (achievement.type[i] == "energybuilding" && achievement.energybuildingIndex[i] >= achievement.requirement[i]) achievement.earn(i);
-        else if (achievement.type[i] == "researchbuilding" && achievement.researchbuildingIndex[i] >= achievement.requirement[i]) achievement.earn(i);
-    }
 
-    if (upgrade.purchased[53] == true){
-        game.metal += game.getMetalPerSecond() * (0.01*game.energy);
-        game.totalmetalmined += game.getMetalPerSecond() * (0.01*game.energy);
-    } else {
+
+    if (upgrade.purchased[58] == true && upgrade.purchased[53] == true) {
+        game.metal += game.getMetalPerSecond() * (5*game.achievementamount) * (0.01*game.energy);
+        game.totalmetalmined += game.getMetalPerSecond() * (5*game.achievementamount) * (0.01*game.energy);
+    }
+    if (upgrade.purchased[58] == true && upgrade.purchased[53] != true) {
+        game.metal += game.getMetalPerSecond() * (5*game.achievementamount);
+        game.totalmetalmined += game.getMetalPerSecond() * (5*game.achievementamount);
+    }
+    if (upgrade.purchased[58] != true && upgrade.purchased[53] != true) {
         game.metal += game.getMetalPerSecond();
         game.totalmetalmined += game.getMetalPerSecond();
-    } 
+    }
+    if (upgrade.purchased[58] != true && upgrade.purchased[53] == true) {
+        game.metal += game.getMetalPerSecond() * (0.01*game.energy);
+        game.totalmetalmined += game.getMetalPerSecond() * (0.01*game.energy);
+    }
+
+
     for (i = 0; i < energybuilding.name.length; i++) {
         energybuilding.absoluteincome[i] = energybuilding.income[i] * (energybuilding.count[i]);
     }

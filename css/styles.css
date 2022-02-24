@@ -173,6 +173,14 @@
     text-shadow: 1px 1px 1px black;
     white-space: nowrap
 }
+
+.purpletext {
+    color: #c981c3;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    white-space: nowrap
+}
+
 .ding {
     opacity: 1;
     transition-duration: 0s;
@@ -472,15 +480,35 @@
 .generator--unavailable {
     background: black;
     cursor: default;
+
+}
+
+.achievementBlock {
+    width: 60%;
+    margin-left: 20.5%;
+    margin-top: 10px;
+}
+
+.achievementPopup {
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    width: 200px;
+    height: 50px;
+    font-size: 1.1em;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+    background-color: #c981c3;
+    border: 2px solid rgb(0, 0, 0);
 }
 .achievementContainer {
-    height: 50px;
-    width: 60%;
-    margin-left: 20%;
+    height: 20px;
+    width: 19%;
     margin-bottom: 0.2%;
     position: center;
     margin-top: 3; 
-    background: #8ecf8e;
+    background: #c981c3;
     text-align: center;
     align-content: center;
     color: black;
@@ -488,8 +516,8 @@
     user-select: none;
     font-weight: bold;
     float: center;
-    border-radius: 50px;
-    border: 2px solid rgb(0, 0, 0);
+    border-radius: 0px;
+    border: 1px solid rgb(255, 255, 255);
 }
 .upgradeblock {
     margin-bottom: 10%;
@@ -539,7 +567,6 @@
 .metalgenContainer p {
     margin: 4px;
 }
-
 
 .cantafford:hover {
     border: 0px solid black;

@@ -1,13 +1,12 @@
-Update Log v 0.155
+Update Log v 0.156
 
 New features:
  - Achievements have been added to the game!
+ - New upgrades tied with Achievements.
 Fixes:
- - 
+ - First attempt at trying to reduce unresponsiveness
 Balancing:
- - 
-UI elements:
- - Upgraded scaling capabilities for smaller screens
+ - Later stage Metalbuildings have had their costs increased
 ----------------------------------------
 Update Log v 0.154
 

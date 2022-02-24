@@ -104,49 +104,9 @@ production      Cost'       production mult     cost mult       production per c
 
 
 Achievements:
-1 000 metal
-1 000 000 metal
-1 000 000 000 metal
-1 000 000 000 000 metal
-1 000 000 000 000 000 metal
-1 000 000 000 000 000 000 metal
-1 000 000 000 000 000 000 000 metal
-1 000 000 000 000 000 000 000 000 Metal
 
-metalbuildings
-10
-25
-50
-75
-100
 
-energybuildings
-10
-25
-50
-75
-100
 
-researchbuildings
-10
-25
-50
-75
-100
-
-upgrades
-5
-10
-15
-20
-25
-30
-35
-40
-45
-50
-55
-60
 
 special:
 69 caterpillars
